@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Quản Lý ADMIN</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+        <h2>Trang Quản Lý Tài Khoản Người Dùng</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Tên Người Dùng</th>
+                <th>Mật Khẩu</th>
+            </tr>
+        </thead>
+        <tbody id="user-list">
+            <!-- Danh sách người dùng sẽ được hiển thị ở đây -->
+        </tbody>
+    </table>
+
+    <script>
+        // Lấy danh sách người dùng từ localStorage
+        let users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Hiển thị danh sách người dùng
+        const userList = document.getElementById("user-list");
+
+        users.forEach(user => {
+            const row = document.createElement("tr");
+
+            const usernameCell = document.createElement("td");
+            usernameCell.textContent = user.username;
+            row.appendChild(usernameCell);
+
+            const passwordCell = document.createElement("td");
+            passwordCell.textContent = user.password;
+            row.appendChild(passwordCell);
+
+            userList.appendChild(row);
+        })
+    </script>
+</body>
+</html>

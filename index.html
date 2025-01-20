@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Shop Huấn Hà🌎</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Thêm thẻ audio để phát nhạc tự động -->
+    <audio id="background-music" autoplay loop>
+        <source src="https://files.catbox.moe/31gq5j.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+<!-- Form Thông Báo khi vào trang web -->
+<div id="welcome-form" class="welcome-form">
+    <div class="form-content">
+    
+        <h2>Shoppocoex.xyz</h2>
+        <p><strong>Admin Web Tạo:</strong></p>
+        <p>Hà Văn Huấn</p>
+        <p><strong>Email Liên Hệ:</strong></p>
+        <p>vanhuanha56@gmail.com</p>
+       <button onclick="contactUs('facebook')">Liên Hệ qua Facebook</button>
+<button onclick="contactUs('zalo')">Liên Hệ qua Zalo</button>
+        <span class="close-btn" onclick="closeWelcomeForm()">Đóng</span>
+    </div>
+</div>
+<!-- Menu 3 gạch ở góc phải -->
+   Menu <div id="menu-toggle" class="menu-icon" onclick="toggleMenu()">&#9776;</div>
+
+    <!-- Menu Chứa các mục -->
+    <div id="menu" class="hidden">
+        <ul>
+            <li><button onclick="openDepositOptions()">Nạp Tiền</button></li>
+        </ul>
+<ul>
+<li>
+<!-- Nút bật nhạc và hiển thị tên nhạc -->
+    <button id="music-toggle">
+        <i id="music-icon" class="fas music-icon fa-play"></i> <!-- Biểu tượng phát nhạc -->
+        <span id="music-name">Nhạc Nền</span>
+    </button>
+</ul>
+</li>
+<ul>
+<li>
+         <button class="close-menu-btn" onclick="toggleMenu()">Đóng</button>
+</ul>
+</li>
+    </div>
+
+    <!-- Mục Nạp Tiền -->
+    <div id="deposit-options" class="hidden">
+        <button onclick="openBankDeposit()">Nạp Bank</button>
+        <button onclick="openCardDeposit()">Nạp Thẻ Cào</button>
+        <button class="close-menu-btn" onclick="closeDepositOptions()">Đóng</button>
+    </div>
+
+    <!-- Form Nạp Bank -->
+    <div id="bank-deposit" class="hidden">
+            <h3><strong>Thông tin tài khoản Ngân Hàng:</strong></h3>
+    <p><strong>
+Ngân Hàng:</strong> Mb Bank</p>
+        <p><strong>Số tài khoản:</strong> 0325575642 <button class="copy-btn" onclick="copyToClipboard('1234567890')"><img src="https://i.imgur.com/iaGxoPH.png" alt="Sao chép"></button></p>
+    <p><strong>Chủ Tài Khoản:</strong> Hà Văn Huấn </p>
+       <p><strong>Mã Nạp:</strong> <span id="deposit-code"></span> <button class="copy-btn" onclick="copyToClipboard(document.getElementById('deposit-code').innerText)"><img src="https://i.imgur.com/iaGxoPH.png" alt="Sao chép"></button></p> 
+        <button class="close-menu-btn" onclick="closeBankDeposit()">Đóng</button>
+    </div>
+
+    <!-- Form Nạp Thẻ Cào -->
+    <div id="card-deposit" class="hidden">
+        <h3>Nhập thông tin thẻ cào:</h3>
+        <input type="text" id="seri" placeholder="Nhập seri thẻ cào" required>
+        <input type="text" id="pin" placeholder="Nhập mã thẻ cào" required>
+        <button onclick="submitCard()">Gửi</button>
+        <button class="close-menu-btn" onclick="closeCardDeposit()">Đóng</button>
+    </div>
+
+    <!-- Đóng menu -->
+    <div id="overlay" class="overlay hidden" onclick="toggleMenu()"></div>
+ <!-- Kết Nối Đi nào menu 3 gạch -->
+<div id="auth">
+            <button id="register-btn">Đăng Ký</button>
+            <button id="login-btn">Đăng Nhập</button>
+        </div>
+        
+    <main>
+        <div id="form-container">
+            <!-- Form đăng ký -->
+            <form id="register-form" class="hidden">
+            <span class="close-btn" onclick="closeForm('register-form')">X</span>
+                <h2>Đăng Ký</h2>
+                <label for="register-username">Tên người dùng:</label>
+                <input type="text" id="register-username" placeholder="Nhập tên người dùng" required>
+                <label for="register-password">Mật khẩu:</label>
+                <input type="password" id="register-password" placeholder="Nhập mật khẩu" required>
+                        <button type="button" onclick="register()">Đăng Ký</button>
+            </form>
+            
+            <!-- Form đăng nhập -->
+            <form id="login-form" class="hidden">
+        <span class="close-btn" onclick="closeForm('login-form')">X</span>
+                <h2>Đăng Nhập</h2>
+                <label for="login-username">Tên người dùng:</label>
+                <input type="text" id="login-username" placeholder="Nhập tên người dùng" required>
+                <label for="login-password">Mật khẩu:</label>
+                <input type="password" id="login-password" placeholder="Nhập mật khẩu" required>
+                <button type="button" onclick="login()">Đăng Nhập</button>
+            </form>
+        </div>
+        
+        
+    </main>
+    <header>
+<!-- Khu vực hiển thị profile sau khi đăng nhập -->
+        <div id="profile" class="hidden">
+            <img src="https://i.imgur.com/0AL0gJu.png" alt="Profile Icon">
+                <div id="username-display" class="blink-text"></div>
+        </div> 
+             <button id="logout-btn" onclick="logout()">Đăng Xuất</button>
+    </header>
+    <main>
+        <section class="product">
+            <img src="file1.jpg" alt="Hình ảnh 1">
+            <h3>File 1: Hình Nền Đẹp</h3>
+            <p>Giá: 50,000 VNĐ</p>
+                        <button onclick="showPurchaseForm('File 1', '50,000 VNĐ', '30 ngày')">Mua Ngay</button>
+        </section>
+
+        <section class="product">
+            <img src="file2.jpg" alt="Hình ảnh 2">
+            <h3>File 2: Bộ Sưu Tập Icon</h3>
+            <p>Giá: 80,000 VNĐ</p>
+                    <button onclick="showPurchaseForm('File 2', '80,000 VNĐ', '45 ngày')">Mua Ngay</button>
+        </section>
+
+        <section class="product">
+            <img src="file3.jpg" alt="Hình ảnh 3">
+            <h3>File 3: Vector Thiết Kế</h3>
+            <p>Giá: 100,000 VNĐ</p>
+                    <button onclick="showPurchaseForm('File 3', '100,000 VNĐ', '60 ngày')">Mua Ngay</button>
+        </section>
+
+        <section class="product">
+            <img src="file4.jpg" alt="Hình ảnh 4">
+            <h3>File 4: Template Website</h3>
+            <p>Giá: 150,000 VNĐ</p>
+                    <button onclick="showPurchaseForm('File 4', '150,000 VNĐ', '90 ngày')">Mua Ngay</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 - Bản quyền thuộc về Hà Văn Huấn</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,376 @@
+/* Đặt style cơ bản */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+main {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 15px;
+}
+
+.product img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.product h3 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.product p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 20px;
+}
+
+
+#auth button {
+    margin-left: 10px;
+    padding: 10px 15px;
+    background-color: transparent;
+    color: #000000;
+    border: 2px solid #00FF00; 
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#auth button:hover {
+    background-color: #218838;
+}
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+form {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 300px;
+    margin: 20px auto;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form.hidden {
+    display: none;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+/* Phần hiển thị Profile */
+#profile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+#profile.hidden {
+    display: none;
+}
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    color: #999;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+/* Đảm bảo form có position relative để nút X được căn đúng */
+form {
+    position: relative;
+}
+
+/* Hiệu ứng chữ nhấp nháy nhiều màu */
+.blink-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0% { color: red; }
+    25% { color: yellow; }
+    50% { color: green; }
+    75% { color: blue; }
+    100% { color: purple; }
+}
+
+
+#username-display {
+    font-size: 20px;
+    color: #333;
+}
+#logout-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #FFD700;
+    border-radius: 5px; 
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#logout-btn:hover {
+    background-color: #c82333;
+}
+
+#logout-btn.hidden {
+    display: none;
+}
+
+// hết 
+
+/* Menu 3 gạch */
+.menu-icon {
+    font-size: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+/* Menu ẩn */
+.hidden {
+    display: none;
+}
+
+/* Menu hiển thị */
+#menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Các button */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Nút Đóng khi hover */
+button:hover {
+    background-color: #45a049;
+}
+
+/* Các form nạp tiền */
+#deposit-options, #bank-deposit, #card-deposit {
+    padding: 20px;
+    margin-top: 50px;
+}
+
+/* Thẻ cào */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+/* Nút đóng menu và form */
+.close-menu-btn {
+    background-color: #f44336;
+    margin-top: 10px;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.close-menu-btn:hover {
+    background-color: #e53935;
+}
+/* Nút sao chép với biểu tượng */
+.copy-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+}
+
+/* Điều chỉnh kích thước biểu tượng sao chép */
+.copy-btn img {
+    width: 35px; /* Thay đổi kích thước icon nếu cần */
+    height: 35px;
+}
+
+/* Hiệu ứng hover cho nút sao chép */
+.copy-btn:hover img {
+    opacity: 0.7; /* Làm mờ icon khi hover */
+}
+
+#login-warning {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336;  /* Màu nền đỏ */
+    color: white;               /* Màu chữ trắng */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 9999;
+    display: none;              /* Ẩn mặc định */
+    animation: fadeIn 2s ease-out; /* Hiệu ứng hiển thị thông báo */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* Kiểu dáng của form thông báo */
+.welcome-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);  /* Nền mờ */
+    display: none;  /* Ẩn mặc định */
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.welcome-form p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
