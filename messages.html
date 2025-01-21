@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Tin Nhắn - Shop Huấn Hà</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Quản Lý Tin Nhắn</h1>
+    </header>
+    <main>
+        <form id="login-form">
+ <div class="blink-text">
+        Admin Đang Xử Lí Lưu Ý : Không Đăng Nhập Tránh lỗi
+    </div>
+            <label for="admin-password">Mật khẩu ADMIN:</label>
+            <input type="password" id="admin-password" placeholder="Nhập mật khẩu ADMIN" required>
+            <button type="submit">Đăng Nhập</button>
+        </form>
+
+        <div id="message-list" class="hidden">
+            <h3>Danh sách tin nhắn:</h3>
+            <ul id="messages-container"></ul>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 - Bản quyền thuộc về Hà Văn Huấn</p>
+    </footer>
+
+<script>
+// Kiểm tra đăng nhập của ADMIN
+document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const password = document.getElementById('admin-password').value.trim();
+    const correctPassword = 'havanhuan442009'; // Mật khẩu của ADMIN
+
+    if (password === correctPassword) {
+        // Hiển thị danh sách tin nhắn nếu mật khẩu đúng
+        document.getElementById('login-form').classList.add('hidden');
+        document.getElementById('message-list').classList.remove('hidden');
+        loadMessages();
+    } else {
+        alert('Mật khẩu không đúng!');
+    }
+});
+
+// Hàm tải và hiển thị tin nhắn
+function loadMessages() {
+    const messages = JSON.parse(localStorage.getItem('messages')) || [];
+    const messagesContainer = document.getElementById('messages-container');
+    messagesContainer.innerHTML = ''; // Xóa danh sách tin nhắn cũ
+
+    messages.forEach((msg, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${msg.name}</strong> (${msg.email})<br>${msg.message}<br><small>${new Date(msg.date).toLocaleString()}</small><hr>`;
+        messagesContainer.appendChild(li);
+    });
+}
+</script>
+</body>
+</html>

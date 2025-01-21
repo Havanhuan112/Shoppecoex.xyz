@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Nạp Thẻ - Shop Huấn Hà</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Quản Lý Nạp Thẻ</h1>
+    </header>
+
+    <main>
+        <!-- Form đăng nhập ADMIN -->
+        <form id="admin-login-form">
+ <div class="blink-text">
+        Admin Đang Xử Lí Lưu Ý : Không Đăng Nhập Tránh lỗi
+    </div>
+            <label for="admin-password">Mật khẩu ADMIN:</label>
+            <input type="password" id="admin-password" placeholder="Nhập mật khẩu ADMIN" required>
+            <button type="submit">Đăng Nhập</button>
+        </form>
+
+        <!-- Danh sách thông tin thẻ cào -->
+        <div id="deposit-list" class="hidden">
+            <h2>Danh Sách Nạp Thẻ:</h2>
+            <ul id="deposits-container"></ul>
+        </div>
+    </main>
+   
+    <footer>
+        <p>&copy; 2025 - Bản quyền thuộc về Hà Văn Huấn</p>
+    </footer>
+
+<script>
+// Kiểm tra đăng nhập ADMIN
+document.getElementById('admin-login-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const password = document.getElementById('admin-password').value.trim();
+    const correctPassword = 'havanhuan442009'; // Mật khẩu ADMIN
+
+    if (password === correctPassword) {
+        // Hiển thị danh sách nạp thẻ nếu mật khẩu đúng
+        document.getElementById('admin-login-form').classList.add('hidden');
+        document.getElementById('deposit-list').classList.remove('hidden');
+        loadDeposits();
+    } else {
+        alert('Mật khẩu không đúng!');
+    }
+});
+
+// Hàm tải và hiển thị thông tin nạp thẻ
+function loadDeposits() {
+    const deposits = JSON.parse(localStorage.getItem('deposits')) || [];
+    const depositsContainer = document.getElementById('deposits-container');
+    depositsContainer.innerHTML = ''; // Xóa danh sách nạp thẻ cũ
+
+    deposits.forEach((deposit, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>Seri:</strong> ${deposit.seri} <br><strong>Mã thẻ:</strong> ${deposit.pin} <br><small>${new Date(deposit.date).toLocaleString()}</small><hr>`;
+        depositsContainer.appendChild(li);
+    });
+}
+</script>
+
+</body>
+</html>
