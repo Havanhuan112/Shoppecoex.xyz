@@ -47,9 +47,9 @@ main {
 }
 
 button {
-    background-color: #28a745;
+    background-color: transparent;
     color: white;
-    border: none;
+    border: red;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -57,7 +57,7 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #transparent;
 }
 
 footer {
@@ -72,7 +72,7 @@ footer {
 #auth button {
     margin-left: 10px;
     padding: 10px 15px;
-    background-color: transparent;
+    background-color: #004707;
     color: #000000;
     border: 2px solid #00FF00; 
     border-radius: 5px;
@@ -122,7 +122,7 @@ form button {
     padding: 10px;
     background-color: #007bff;
     color: white;
-    border: none;
+    border: lime;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -189,9 +189,9 @@ form {
     color: #333;
 }
 #logout-btn {
-    background-color: transparent;
+    background-color: #004707;
     color: white;
-    border: 1px solid #FFD700;
+    border: 1px solid lime;
     border-radius: 5px; 
     padding: 10px 15px;
     border-radius: 5px;
@@ -238,9 +238,9 @@ form {
 
 /* Các button */
 button {
-    background-color: #4CAF50;
+    background-color: #004707;
     color: white;
-    border: none;
+    border: lime;
     padding: 10px;
     width: 100%;
     margin: 10px 0;
@@ -270,13 +270,13 @@ input {
 }
 /* Nút đóng menu và form */
 .close-menu-btn {
-    background-color: #f44336;
+    background-color: #004707;
     margin-top: 10px;
     color: white;
     font-size: 16px;
     padding: 10px;
     cursor: pointer;
-    border: none;
+    border: lime;
     border-radius: 5px;
     width: 100%;
 }
@@ -373,4 +373,8 @@ input {
     font-size: 18px;
     margin: 10px 0;
 }
+
+
+
+// bảo trì 
 

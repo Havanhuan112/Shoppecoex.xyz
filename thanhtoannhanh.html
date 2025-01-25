@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile MB Bank</title>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://tophinhanh.net/wp-content/uploads/2023/12/anh-gai-xinh-nguc-to-4.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            z-index: 2;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            animation: bounce 1s infinite; /* Hiệu ứng nhảy lên */
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .flame {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.8) 20%, transparent 70%);
+            animation: flame 1.5s infinite ease-in-out, flameRed 1s infinite;
+            z-index: 1;
+        }
+
+        @keyframes flame {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes flameRed {
+            0% {
+                background: radial-gradient(circle, rgba(255, 0, 0, 0.8) 20%, transparent 70%);
+            }
+            50% {
+                background: radial-gradient(circle, rgba(255, 69, 0, 0.8) 20%, transparent 70%);
+            }
+            100% {
+                background: radial-gradient(circle, rgba(255, 0, 0, 0.8) 20%, transparent 70%);
+            }
+        }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-10px);
+            }
+            50% {
+                transform: translateY(0);
+            }
+            75% {
+                transform: translateY(-5px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .info {
+            margin-bottom: 20px;
+        }
+
+        .info h2 {
+            margin: 10px 0;
+            color: #2b59c3;
+        }
+
+        .info p {
+            margin: 5px 0;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .marquee {
+            margin-top: 20px;
+            background: #2b59c3;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-text {
+            display: inline-block;
+            animation: scroll 10s linear infinite;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Style for copy button */
+        .copy-btn {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #2b59c3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .copy-btn:hover {
+            background-color: #1a4373;
+        }
+
+        .copy-message {
+            margin-top: 5px;
+            color: green;
+            font-size: 14px;
+            display: none;
+        }
+
+        /* Thêm hiệu ứng con sâu bò trên chữ */
+        .snake {
+            position: relative;
+            display: inline-block;
+            font-size: 24px;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .snake:before {
+            content: '🐍'; /* Chèn biểu tượng con sâu */
+            position: absolute;
+            top: -5px;
+            left: -20px;
+            animation: moveSnake 5s infinite linear;
+        }
+
+        @keyframes moveSnake {
+            0% {
+                left: -20px;
+            }
+            25% {
+                left: 0;
+            }
+            50% {
+                left: 10px;
+            }
+            75% {
+                left: 0;
+            }
+            100% {
+                left: -20px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    <div class="container">
+        <!-- Logo MB Bank với hiệu ứng lửa và nhảy -->
+        <div class="logo">
+            <div class="flame"></div>
+            <img src="https://ibrand.vn/wp-content/uploads/2024/07/mbbank-logo-5.png" alt="MB Bank Logo">
+        </div>
+
+        <!-- Thông tin tài khoản -->
+        <div class="info">
+            <h2>Ngân hàng MB Bank</h2>
+            <p>Chủ tài khoản: <strong>Hà Văn Huấn</strong></p>
+            <p>Số tài khoản: <strong id="accountNumber" onclick="copyAccountNumber()">0325575642</strong></p>
+            <p><span class="copy-message" id="copyMessage">Đã sao chép vào clipboard!</span></p>
+        </div>
+
+        <!-- Dòng chữ chạy với con sâu bò -->
+        <div class="marquee">
+            <div class="snake">
+                <span class="marquee-text">Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi! Vui lòng chuyển khoản đúng số tài khoản để tránh nhầm lẫn.</span>
+            </div>
+        </div>
+
+        <!-- Nút sao chép -->
+        <button class="copy-btn" onclick="copyAccountNumber()">Sao chép số tài khoản</button>
+    </div>
+
+    <script>
+        // Hiệu ứng particles với màu đỏ
+        particlesJS("particles-js", {
+            "particles": {
+                "number": {
+                    "value": 100,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ff0000"  // Đổi màu particles thành đỏ
+                },
+                "shape": {
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 0.5,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1
+                    }
+                },
+                "size": {
+                    "value": 3,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 40,
+                        "size_min": 0.1
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 150,
+                    "color": "#ff0000",  // Đổi màu liên kết thành đỏ
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 6,
+                    "direction": "none",
+                    "random": false,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "repulse"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    }
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "repulse": {
+                        "distance": 100,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Hàm sao chép số tài khoản
+        function copyAccountNumber() {
+            const accountNumber = document.getElementById("accountNumber").innerText;
+            const textarea = document.createElement("textarea");
+            textarea.value = accountNumber;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+
+            // Hiển thị thông báo sao chép thành công
+            const copyMessage = document.getElementById("copyMessage");
+            copyMessage.style.display = "inline";
+            setTimeout(() => {
+                copyMessage.style.display = "none";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
