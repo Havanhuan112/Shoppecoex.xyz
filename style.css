@@ -31,7 +31,7 @@ main {
 
 .product img {
     width: 100%;
-    height: 150px;
+    height: 275px;
     object-fit: cover;
     border-radius: 8px;
 }
@@ -45,27 +45,40 @@ main {
     color: #555;
     margin-bottom: 10px;
 }
+/* Chữ HOT */
+    .hot {
+      display: inline-block;
+      margin-left: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      color: transparent;
+      background: linear-gradient(90deg, red, orange, yellow);
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: flame 1s infinite, blink 1s infinite;
+    }
 
-button {
-    background-color: transparent;
-    color: white;
-    border: red;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
+    /* Hiệu ứng lửa cháy liên tục */
+    @keyframes flame {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-button:hover {
-    background-color: #transparent;
-}
+    /* Hiệu ứng nhấp nháy */
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
 
 footer {
-    background-color: #333;
-    color: white;
+    background-color: transparent;
+    color: Black;
     text-align: center;
     padding: 1rem 0;
     margin-top: 20px;
+    border: 2px solid Black;
+    border-radius: 10px
 }
 
 
@@ -74,9 +87,10 @@ footer {
     padding: 10px 15px;
     background-color: #004707;
     color: #000000;
-    border: 2px solid #00FF00; 
-    border-radius: 5px;
+    border: 2px solid #008080; 
+    border-radius: 10px;
     cursor: pointer;
+   
 }
 
 #auth button:hover {
@@ -89,7 +103,7 @@ main {
 }
 
 form {
-    background-color: white;
+    background-color: #ffffff;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
@@ -123,7 +137,7 @@ form button {
     background-color: #007bff;
     color: white;
     border: lime;
-    border-radius: 5px;
+    border-radius: 15px;
     cursor: pointer;
 }
 
@@ -169,7 +183,7 @@ form {
 
 /* Hiệu ứng chữ nhấp nháy nhiều màu */
 .blink-text {
-    font-size: 24px;
+    font-size: 10px;
     font-weight: bold;
     color: red;
     animation: blink 1.5s infinite;
@@ -185,17 +199,18 @@ form {
 
 
 #username-display {
-    font-size: 20px;
+    font-size: 18px;
     color: #333;
 }
 #logout-btn {
-    background-color: #004707;
+    background-color: transparent;
     color: white;
     border: 1px solid lime;
-    border-radius: 5px; 
-    padding: 10px 15px;
-    border-radius: 5px;
+    border-radius: 20px; 
+    padding: 5px 10px;
+    border-radius: 20px;
     cursor: pointer;
+    width: 40%;
 }
 
 #logout-btn:hover {
@@ -209,14 +224,69 @@ form {
 // hết 
 
 /* Menu 3 gạch */
-.menu-icon {
-    font-size: 30px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
+/* Hamburger menu container */
+    .menu-container {
+      position: relative;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+    }
 
+    /* Hamburger icon lines */
+    .menu-container span {
+      display: block;
+      width: 5%;
+      height: 5px;
+      background-color: #f5b502; /* Màu vàng */
+      border-radius: 5px;
+      transition: all 0.3s ease-in-out;
+      margin: 6px 0;
+    }
+
+    /* Menu items */
+    .menu-items {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: #f5b502; /* Màu vàng */
+      color: #fff;
+      width: 150px;
+      padding: 10px;
+      border-radius: 5px;
+      display: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .menu-items a {
+      display: block;
+      text-decoration: none;
+      color: #fff;
+      padding: 8px 10px;
+      border-radius: 3px;
+      transition: background 0.3s ease;
+    }
+
+    .menu-items a:hover {
+      background-color: #e09f02; /* Màu vàng đậm hơn */
+    }
+
+    /* Active state */
+    .menu-container.active span:nth-child(1) {
+      transform: translateY(11px) rotate(45deg);
+    }
+
+    .menu-container.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-container.active span:nth-child(3) {
+      transform: translateY(-11px) rotate(-45deg);
+    }
+
+    .menu-container.active + .menu-items {
+      display: block;
+    }
+  
 /* Menu ẩn */
 .hidden {
     display: none;
@@ -236,16 +306,16 @@ form {
 }
 
 
-/* Các button */
+/* Các nut button */
 button {
-    background-color: #004707;
-    color: white;
+    background-color: #778899;
+    color: White;
     border: lime;
     padding: 10px;
     width: 100%;
     margin: 10px 0;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 20px;
     font-size: 16px;
 }
 
@@ -270,19 +340,19 @@ input {
 }
 /* Nút đóng menu và form */
 .close-menu-btn {
-    background-color: #004707;
+    background-color: #FF0000;
     margin-top: 10px;
-    color: white;
+    color: White;
     font-size: 16px;
     padding: 10px;
     cursor: pointer;
     border: lime;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 100%;
 }
 
 .close-menu-btn:hover {
-    background-color: #e53935;
+    background-color: red;
 }
 /* Nút sao chép với biểu tượng */
 .copy-btn {
@@ -377,4 +447,5 @@ input {
 
 
 // bảo trì 
+
 

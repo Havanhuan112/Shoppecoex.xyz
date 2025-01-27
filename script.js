@@ -215,10 +215,10 @@ function closeWelcomeForm() {
 function contactUs(platform) {
     if (platform === 'facebook') {
         // Dẫn đến Facebook
-        window.location.href = "https://www.facebook.com/yourusername";  // Thay yourusername bằng username của bạn
+        window.location.href = "https://www.facebook.com/profile.php?id=61561543393412";  // Thay yourusername bằng username của bạn
     } else if (platform === 'zalo') {
         // Dẫn đến Zalo
-        window.location.href = "https://zalo.me/yourzaloid";  // Thay yourzaloid bằng ID Zalo của bạn
+        window.location.href = "https://zaloapp.com/qr/p/1s3nnmtozvd1l?src=qr";  // Thay yourzaloid bằng ID Zalo của bạn
     }
 }
 
@@ -295,18 +295,17 @@ function submitCard() {
     // Chuyển đến trang quản lý tin nhắn (dành cho ADMIN)
     window.location.href = 'admin-dashboard.html';
 }
-
-// Hàm kiểm tra trình duyệt
-        function checkBrowser() {
-            var userAgent = navigator.userAgent;
-            // Kiểm tra trình duyệt
-            if (!userAgent.includes("Chrome") && !userAgent.includes("Safari")) {
-                // Nếu không phải Chrome hoặc Safari, hiển thị thông báo khóa web
-                alert("Vui lòng sử dụng trình duyệt Chrome hoặc Safari để truy cập trang web.");
-                // Tạm thời ẩn nội dung trang web
-                document.body.style.display = "none";
-            }
-        }
-
-        // Kiểm tra trình duyệt khi trang web được tải
-        window.onload = checkBrowser;
+//
+    // Hàm tải ảnh ngẫu nhiên của người đàn ông
+    fetch('https://randomuser.me/api/?gender=male') // Lấy dữ liệu người đàn ông từ Random User API
+      .then(response => response.json())
+      .then(data => {
+        // Lấy URL ảnh của người đàn ông
+        const imageUrl = data.results[0].picture.large;
+        // Đặt URL ảnh vào thuộc tính src của thẻ img
+        document.getElementById('profileIcon').src = imageUrl;
+      })
+      .catch(error => {
+        console.error('Có lỗi xảy ra:', error);
+      });
+ 

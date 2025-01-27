@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Menu 3 gạch ở góc phải -->
+<div id="menu-toggle" class="menu-container" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
 <!-- Thêm thẻ audio để phát nhạc tự động -->
     <audio id="background-music" autoplay loop>
         <source src="https://files.catbox.moe/31gq5j.mp3" type="audio/mp3">
@@ -18,17 +24,15 @@
     <div class="form-content">
     
         <h2>Shoppocoex.xyz</h2>
-        <p><strong>Admin Web Tạo:</strong></p>
+        <p><strong>Chào Mừng Bạn Đã Đến Với Shop:</strong></p>
         <p>Hà Văn Huấn</p>
-        <p><strong>Email Liên Hệ:</strong></p>
-        <p>vanhuanha56@gmail.com</p>
+        <p><strong>Zalo :</strong></p>
+        <p>0325575642</p>
        <button onclick="contactUs('facebook')">Liên Hệ qua Facebook</button>
 <button onclick="contactUs('zalo')">Liên Hệ qua Zalo</button>
         <span class="close-btn" onclick="closeWelcomeForm()">Đóng</span>
     </div>
 </div>
-<!-- Menu 3 gạch ở góc phải -->
-   Menu <div id="menu-toggle" class="menu-icon" onclick="toggleMenu()">&#9776;</div>
 
     <!-- Menu Chứa các mục -->
     <div id="menu" class="hidden">
@@ -42,9 +46,10 @@
 </ul>
 <ul>
     <li>
-        <button onclick="location.href='thanhtoannhanh.html'">Thanh Toán Nhanh</button>
+        <button onclick="location.href='thanhtoannhanh.html'">Nạp Nhanh</button>
     </li>
 </ul>
+
 <ul>
 <li>
 <!-- Nút bật nhạc và hiển thị tên nhạc -->
@@ -59,6 +64,7 @@
          <button class="close-menu-btn" onclick="toggleMenu()">Đóng</button>
 </ul>
 </li>
+<a href="profiles.html" class="button">Thông tin<span class="hot">Admin</span></a>
     </div>
 
     <!-- Mục Nạp Tiền -->
@@ -126,40 +132,61 @@ Ngân Hàng:</strong> Mb Bank</p>
     <header>
 <!-- Khu vực hiển thị profile sau khi đăng nhập -->
         <div id="profile" class="hidden">
-            <img src="https://i.imgur.com/0AL0gJu.png" alt="Profile Icon">
+              <img id="profileIcon" src="" alt="Profile Icon" width="150" height="150">
                 <div id="username-display" class="blink-text"></div>
         </div>
- <a href="profiles.html" class="button">Thông tin</a>
              <button id="logout-btn" onclick="logout()">Đăng Xuất</button>
     </header>
     <main>
+<section class="product">
+    
+          <p class="small-font" style="color: #ff5722;">Thông Báo Ngày 28/1/2025 👀</p>
+  <p class="small-font">Những Khách Hàng Đang Có ý định Mua Đồ Chơi Trên Shop Thì Hãy Mua Ngay Đi Nhé , Vì Bên Mình đang Giảm giá Những Bản 300K Chỉ Còn 150K 🗣️
+<p>
+• Và Bản 500K Chỉ Còn 250K Quá Hời Cho Tất Cả Các Bạn Nhé 
+</p>
+<p>
+• Sale Hết Ngày 05/02/2025  
+</p>
+<p>
+• Nếu Có Bất Cứ Thắc Mắc Gì Hãy Liên Hệ Cho Admin <label>
+  <a href="https://www.facebook.com/profile.php?id=61561543393412" target="_blank" style="text-decoration: none; color: blue;">
+    Nhấn vào đây
+  </a>
+</label>
+</p>
+</p>
+    
+  </section>
     <section class="product">
         <img src="https://i.imgur.com/smselrp.jpeg" alt="Hình ảnh 1">
         <h3>Hỗ Trợ Kéo Tâm Sử Dụng All Thiết Bị (Android , Ios )</h3>
         <p>Giá: 50,000 VNĐ</p>
-        <button onclick="window.location.href='payment1.html'">Mua Ngay</button>
+        <button onclick="window.location.href='payment1.html'">Mua Ngay<span class="hot">HOT</span></button>
     </section>
 
     <section class="product">
         <img src="https://i.imgur.com/3hq4qfO.jpeg" alt="Hình ảnh 2">
         <h3>Kéo Nhẹ Aim Đầu Bảo Hành Antiband , Sử Dụng Leo Rank All Map , Tử Chiến , Sinh Tồn (sử dụng 1Ob )</h3>
         <p>Giá: 150,000 VNĐ</p>
-        <button onclick="window.location.href='payment2.html'">Mua Ngay</button>
+        <button onclick="window.location.href='payment2.html'">Mua Ngay<span class="hot">HOT</span></button>
     </section>
 
     <section class="product">
         <img src="https://i.imgur.com/eI3qaTe.jpeg" alt="Hình ảnh 3">
         <h3>Sử Dụng Tất Cả Thiết Bị , Chỉ Càn Nhích Nhẹ Nút Bắn Là Hesot - Ghim đầu chặt Khi kéo ( Bảo Hành An toàn All Map)</h3>
         <p>Giá: 300,000 VNĐ</p>
-        <button onclick="window.location.href='payment3.html'">Mua Ngay</button>
+        <button onclick="window.location.href='payment3.html'">Mua Ngay<span class="hot">HOT</span></button>
     </section>
 
-    <section class="product">
-        <img src="https://i.imgur.com/UmLVPbX.jpeg" alt="Hình ảnh 4">
-        <h3>Bảo Hành All Khi Chơi - Leo Rank All Map Và Sử Dụng Tất Cả Ob </h3>
-        <p>Giá: 500,000 VNĐ</p>
-        <button onclick="window.location.href='payment4.html'">Mua Ngay</button>
-    </section>
+      <section class="product">
+    <img src="https://i.imgur.com/UmLVPbX.jpeg" alt="Hình ảnh 4">
+    <h3>Bảo Hành All Khi Chơi - Leo Rank All Map Và Sử Dụng Tất Cả Ob</h3>
+    <p>Giá: 500,000 VNĐ</p>
+    <button onclick="window.location.href='payment4.html'">Mua Ngay 
+      <span class="hot">HOT</span>
+    </button>
+  </section>
 </main>
     <footer>
         <p>&copy; 2025 - Bản quyền thuộc về Hà Văn Huấn</p>

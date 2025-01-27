@@ -64,6 +64,7 @@
 
         /* Hiệu ứng cho nút sao chép */
         button {
+            width: 100%;
             padding: 10px 20px;
             margin-top: 10px;
             background-color: #007bff;
@@ -96,6 +97,49 @@
             margin-top: 20px;
             display: none;
         }
+/* Cơ bản cho nút */
+.my-button {
+  background-color: #007bff; /* Màu nền */
+  width: 100%;
+  color: white; /* Màu chữ */
+  border: none; /* Không viền */
+  padding: 10px 20px; /* Khoảng cách bên trong */
+  font-size: 1em; /* Kích thước chữ */
+  cursor: pointer; /* Con trỏ hiển thị khi hover */
+  border-radius: 5px; /* Bo góc */
+  transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+}
+
+/* Hiệu ứng khi di chuột vào nút */
+.my-button:hover {
+  background-color: #45a049; /* Đổi màu nền */
+  transform: scale(1.1); /* Phóng to nhẹ */
+}
+
+/* Hiệu ứng khi nhấn nút */
+.my-button:active {
+  background-color: #3e8e41; /* Màu nền khi nhấn */
+  transform: scale(0.95); /* Thu nhỏ nhẹ */
+}
+    .bold-text {
+      font-weight: bold;
+    }
+
+    .light-text {
+      font-weight: 300;
+    }
+
+         #loading {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #code {
+            font-size: 24px;
+            font-weight: bold;
+            color: green;
+            display: none;
+        }
+   
     </style>
 </head>
 <body>
@@ -104,22 +148,21 @@
     </header>
     <main>
         <div id="payment-details">
-            <h2 id="product-name"></h2>
-            <p id="product-price"></p>
+             <p class="bold-text">Giá Bán : <p class="light-text">300.000₫ VND</p></p>
+            
         </div>
         <div id="bank-deposit">
             <h3>Thông tin chuyển khoản:</h3>
             <p><strong>Ngân Hàng:</strong> MB Bank</p>
             <p><strong>Số tài khoản:</strong> 0325575642</p>
 <p><strong>Nếu Đã Chuyển Khoản Hãy Liên Hệ Zalo : </strong>0325575642</p>
-            <p><strong>Chủ tài khoản:</strong> Hà Văn Huấn</p>
-            <p><strong>Nội dung chuyển khoản:</strong> <span id="deposit-note"></span></p>
-            <button onclick="copyToClipboard(document.getElementById('deposit-note').innerText)">Sao chép nội dung</button>
+            <p><strong>Chủ tài khoản:</strong> Hà Văn Huấn</p>                             <p><strong>Nội Dung:<coder id="code">Aim300KthanhtoanVisa</coder>Aim300KthanhtoanVisa</strong>
+<button onclick="copyToClipboard(document.getElementById('code').innerText)">Sao chép nội dung</button>
         </div>
 
         <!-- Nút xác nhận đã chuyển khoản -->
-        <div>
-            <button onclick="confirmPayment()">Xác nhận đã chuyển khoản</button>
+        <div id="payment-details">
+            <button class="my-button" onclick="confirmPayment()">Xác nhận đã chuyển khoản</button>
         </div>
 
         <!-- Thông báo "Chờ xử lý" -->
@@ -141,9 +184,8 @@
         document.getElementById('product-name').textContent = `Sản phẩm: ${productName}`;
         document.getElementById('product-price').textContent = `Giá: ${productPrice}`;
 
-        // Tạo nội dung chuyển khoản
-        const depositNote = `Thanh toán ${productName} - ${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
-        document.getElementById('deposit-note').textContent = depositNote;
+                        
+ 
 
         // Hàm sao chép nội dung vào clipboard
         function copyToClipboard(text) {
@@ -158,6 +200,29 @@
         function confirmPayment() {
             document.getElementById('processing-message').style.display = 'block';  // Hiển thị thông báo
         }
+
+// Hàm tạo chuỗi ngẫu nhiên gồm các ký tự
+        function generateRandomWord(length) {
+            const characters = 'abcdefghijklmnopqrstuvwxyz0123456789'; // Chỉ chấp nhận chữ và số
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                result += characters[randomIndex];
+            }
+            return result;
+        }
+
+        // Hàm tạo và hiển thị chuỗi 8 từ ngẫu nhiên
+        function displayRandomWords() {
+            const words = [];
+            for (let i = 0; i < 8; i++) {
+                words.push(generateRandomWord(5)); // Mỗi từ có độ dài 5 ký tự
+            }
+            document.getElementById('coder').textContent = words.join(''); // Hiển thị chuỗi mà không có khoảng trắng
+        }
+
+        // Gọi hàm để hiển thị chuỗi khi trang được tải
+        displayRandomWords();
     </script>
 </body>
 </html>
