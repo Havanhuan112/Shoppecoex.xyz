@@ -437,30 +437,6 @@ input {
 
 // chat bot 
    /* Hiệu ứng chữ phát sáng */
-    body {
-      font-family: 'Roboto', sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #121212; /* Nền tối */
-    }
-
-    /* Áp dụng hiệu ứng phát sáng cho văn bản */
-    .glowing-text {
-      color: white;
-      font-size: 50px;
-      text-align: center;
-      text-shadow: 
-        0 0 5px #ffffff,
-        0 0 10px #ffffff,
-        0 0 15px #ff00ff,
-        0 0 20px #ff00ff,
-        0 0 25px #ff00ff,
-        0 0 30px #ff00ff,
-        0 0 35px #ff00ff;
-    }
   // Chữ hiển thị của bố huấn 
 /* Phần thông tin liên hệ */
     .contact-info {
@@ -507,3 +483,129 @@ input {
     }
 
   
+  
+/* Định nghĩa icon nhỏ và đẹp */
+.Black-icon {
+    font-size: 30px; /* Kích thước icon */
+    text-align: center; /* Căn giữa icon */
+    animation: blinkColor 1s infinite alternate; /* Áp dụng hiệu ứng nhấp nháy với màu sắc */
+    display: inline-block;
+    color: #fff; /* Màu sắc ban đầu */
+    transition: transform 0.3s ease; /* Tạo hiệu ứng chuyển động nhỏ khi nhấp */
+}
+
+/* Hiệu ứng nhấp nháy và thay đổi màu sắc */
+@keyframes blinkColor {
+    0% {
+        color: red;
+        transform: scale(1);
+    }
+    25% {
+        color: orange;
+        transform: scale(1.1);
+    }
+    50% {
+        color: yellow;
+        transform: scale(1);
+    }
+    75% {
+        color: green;
+        transform: scale(1.1);
+    }
+    100% {
+        color: blue;
+        transform: scale(1);
+    }
+}
+
+/* Thêm hiệu ứng khi người dùng hover lên icon */
+.blinking-icon:hover {
+    transform: scale(1.2); /* Phóng to icon khi hover */
+    cursor: pointer; /* Hiển thị con trỏ khi hover */
+}
+/* Kiểu chung cho icon */
+i {
+    font-size: 24px; /* Kích thước icon */
+    margin-right: 8px; /* Khoảng cách giữa icon và text */
+    color: #555; /* Màu sắc mặc định */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+}
+
+/* Hiệu ứng khi di chuột qua icon */
+i:hover {
+    color: #ff5722; /* Màu khi hover */
+    transform: scale(1.2); /* Phóng to icon khi hover */
+}
+
+/* Thêm hiệu ứng cho mỗi icon khi được nhấn */
+i:active {
+    transform: scale(0.9); /* Thu nhỏ icon khi nhấn */
+}
+
+/* Tùy chỉnh màu sắc cho từng icon */
+.fas.fa-coins {
+    color: #ff9800; /* Màu vàng cho icon tiền */
+}
+
+.fas.fa-envelope {
+    color: #4caf50; /* Màu xanh lá cho icon email */
+}
+
+.fas.fa-comment-alt {
+    color: #2196f3; /* Màu xanh dương cho icon chatbot */
+}
+
+.fas.fa-clock {
+    color: #9e9e9e; /* Màu xám cho icon đồng hồ */
+}
+
+.fas.fa-home {
+    color: #673ab7; /* Màu tím cho icon trang chủ */
+}
+.fas.fa-comments {
+  color: #0088cc; /* Màu Zalo */
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.fas.fa-comments:hover {
+  color: #005f8a;
+  transform: scale(1.2); /* Hiệu ứng phóng to */
+}
+
+ // chữ chạy 
+        #marquee {
+            font-size: 40px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+        }
+        
+ 
+           
+ .blinking-text {
+ color: #FF00FF;
+ font-size: 15px;
+        }
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+   
+            #tsparticles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+   

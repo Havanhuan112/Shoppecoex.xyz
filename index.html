@@ -11,10 +11,11 @@
     <title>Shop Huấn Hà🌎</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="https://cdn.vinaenter.edu.vn/wp-content/uploads/2024/08/hinh-nen-wibu.jpg" type="image/png">
-
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
-<body>
-
+<body> 
+        
+    <div id="particles-js"></div>   
 <!-- Thêm thẻ audio để phát nhạc tự động -->
     <audio id="background-music" autoplay loop>
         <source src="https://files.catbox.moe/31gq5j.mp3" type="audio/mp3">
@@ -23,12 +24,15 @@
 <!-- Form Thông Báo khi vào trang web -->
 <div id="welcome-form" class="welcome-form">
     <div class="form-content">
-        <h2 class="glowing-text">Shop Huấn Hà Vn
-       <p>Hà Văn Huấn Bán Tất Cả Các Loại Files Uy Tín Chất Lượng Cao
-Zalo : 0325575642</p>
-       <button onclick="contactUs('facebook')">Liên Hệ qua Facebook</button>
-<button onclick="contactUs('zalo')">Liên Hệ qua Zalo</button>
-        <span class="close-btn" onclick="closeWelcomeForm()">Đóng</span>
+        
+       <li>
+  <i class="fas fa-comments">Hà Văn Huấn !
+Dịch Vụ Hỗ Trợ Game Hack Game , Data Hack Game Antiband , Files Hỗ Trợ Kéo Tâm Uy Tín Chất Lượng Cao</i>
+<i class="fas fa-coins"></i> • Mọi Thắc Mắc Liên Hệ Qua Zalo 0325575642
+</li>
+      
+<button class="close-menu-btn" onclick="closeWelcomeForm()">Đóng</button>
+        
 </h2>
     </div>
 </div>
@@ -36,39 +40,36 @@ Zalo : 0325575642</p>
     <!-- Menu Chứa các mục -->
     <div id="menu" class="hidden">
         <ul>
-            <li><button onclick="openDepositOptions()">Nạp Tiền</button></li>
+            <li><i class="fas fa-coins" onclick="openDepositOptions()"></i> Nạp Tiền<!-- Coins Icon --></li>
         </ul>
 <ul>
     <li>
-        <button onclick="location.href='contact_form.html'">Liên Hệ</button>
+<i class="fas fa-envelope" onclick="location.href='contact_form.html'"></i>Liên Hệ
+        
     </li>
 </ul>
 <ul>
     <li>
-        <button onclick="location.href='chatbot.html'">Chatbot</button>
+<i class="fas fa-comment-alt" onclick="location.href='chatbot.html'"></i> ChatBot 
+        
     </li>
 </ul>
 <ul>
     <li>
-        <button onclick="location.href='thanhtoannhanh.html'">Nạp Nhanh</button>
+<i class="fas fa-clock" onclick="location.href='thanhtoannhanh.html'"></i> Nạp Nhanh
+        
     </li>
 </ul>
-
 <ul>
 <li>
-<!-- Nút bật nhạc và hiển thị tên nhạc -->
-    <button id="music-toggle">
-        <i id="music-icon" class="fas music-icon fa-play"></i> <!-- Biểu tượng phát nhạc -->
-        <span id="music-name">Nhạc Nền</span>
-    </button>
+ <i class="fas fa-home" onclick="toggleMenu()"></i> Trang Chủ      
 </ul>
 </li>
 <ul>
 <li>
-         <button class="close-menu-btn" onclick="toggleMenu()">Đóng</button>
+<a href="profiles.html"><i class="fas fa-info" href="profiles.html"></i>Thông Tin</a>
 </ul>
 </li>
-<a href="profiles.html" class="button">Thông tin<span class="hot">Admin</span></a>
     </div>
 
     <!-- Mục Nạp Tiền -->
@@ -142,17 +143,17 @@ Ngân Hàng:</strong> Mb Bank</p>
       <span></span>
       <span></span>
     </div>
-        <div id="profile" class="hidden">
-              <img id="profileIcon" src="" alt="Profile Icon" width="150" height="150">
-                <div id="username-display" class="blink-text"></div>
+        <div id="profile" class="hidden"> 
+             <img src="https://i.pinimg.com/736x/aa/a6/fe/aaa6fe6e8ebebaf5fd5579ff717460ed.jpg" alt="User Icon" class="user-icon">
+                <div id="username-display" class="blink-text"></i></div>
         </div>
              <button id="logout-btn" onclick="logout()">Đăng Xuất</button>
     </header>
     <main>
     </section>
 <section class="product">
-    
           <p class="small-font" style="color: #ff5722;">Thông Báo Ngày 28/1/2025 👀</p>
+<i class="fas fa-user">Hà Văn Huấn</i>
   <p class="small-font">Những Khách Hàng Đang Có ý định Mua Đồ Chơi Trên Shop Thì Hãy Mua Ngay Đi Nhé , Vì Bên Mình đang Giảm giá Những Bản 300K Chỉ Còn 150K 🗣️
 <p>
 • Và Bản 500K Chỉ Còn 250K Quá Hời Cho Tất Cả Các Bạn Nhé 
@@ -165,6 +166,11 @@ Ngân Hàng:</strong> Mb Bank</p>
   <a href="https://www.facebook.com/profile.php?id=61561543393412" target="_blank" style="text-decoration: none; color: blue;">
     Nhấn vào đây
   </a>
+<i class="fas fa-heart"></i> <!-- Hiển thị icon hình trái tim --> <!-- Facebook Icon -->
+<p><i class="fas fa-coins"></i>  <!-- Dollar Sign Icon --> • Chúng Tôi Vẫn Đang Hoạt Động Xuyên Ngày Đêm Để Suport Tất Cả Các Bạn , Hãy Mua Một Bản Và Ở Nhà Chơi Fai Fai Nào ! </p>
+<div id="marquee" class="multi-color">
+        <span class="blinking-text">Chúc Mừng Năm Mới 2025!</span>
+    </div>
 </label>
 </p>
 </p>
@@ -181,7 +187,7 @@ Ngân Hàng:</strong> Mb Bank</p>
       <option value="2">50.000₫ </option>
       <option value="3">100.000₫ </option>
     </select>
-        <button onclick="window.location.href='payment1.html'">Mua Ngay<span class="hot">HOT</span></button>
+        <button onclick="window.location.href='payment1.html'">Mua Ngay        <i class="fas fa-download"></i><span class="hot">HOT</span></button>
     </section>
 
     <section class="product">
@@ -195,7 +201,7 @@ Ngân Hàng:</strong> Mb Bank</p>
       <option value="2">150.000₫ </option>
       <option value="3">250.000₫ </option>
     </select>
-        <button onclick="window.location.href='payment2.html'">Mua Ngay<span class="hot">HOT</span></button>
+        <button onclick="window.location.href='payment2.html'">Mua Ngay        <i class="fas fa-download"></i><span class="hot">HOT</span></button>
     </section>
 
     <section class="product">
@@ -209,7 +215,7 @@ Ngân Hàng:</strong> Mb Bank</p>
       <option value="2">300.000₫ </option>
       <option value="3">400.000₫ </option>
     </select>
-        <button onclick="window.location.href='payment3.html'">Mua Ngay<span class="hot">HOT</span></button>
+        <button onclick="window.location.href='payment3.html'">Mua Ngay        <i class="fas fa-download"></i><span class="hot">HOT</span></button>
     </section>
 
       <section class="product">
@@ -223,9 +229,7 @@ Ngân Hàng:</strong> Mb Bank</p>
       <option value="2">500.000₫ </option>
       <option value="3">550.000₫ </option>
     </select>
-    <button onclick="window.location.href='payment4.html'">Mua Ngay 
-      <span class="hot">HOT</span>
-    </button>
+        <button onclick="window.location.href='payment4.html'">Mua Ngay        <i class="fas fa-download"></i><span class="hot">HOT</span></button>
   </section>
 <section>
    <!-- Phần menu liên hệ -->
@@ -236,12 +240,89 @@ Ngân Hàng:</strong> Mb Bank</p>
       
       <!-- Icon Điện Thoại -->
       <div><i class="fas fa-phone-alt"></i><span>SĐT: +84 325 575 642</span></div>
-   
+<i class="fab fa-youtube"><a href="https://youtube.com/@huanbot-m7g?si=S_KG0nDRZNOuxQLI" target="_blank" style="text-decoration: none; color: blue;">
+    Yutube
+  </a></i>
 </section>
 </main>
-        
-    
-    <script src="script.js"></script>
-    
+ <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS("particles-js", {
+            particles: {
+                number: {
+                    value: 100, // Số lượng hoa đào rơi
+                    density: {
+                        enable: true,
+                        value_area: 500
+                    }
+                },
+                color: {
+                    value: "#ff69b4" // Màu sắc của hoa đào (hồng)
+                },
+                shape: {
+                    type: "star", // Hình dạng của hạt là hình tròn
+                    stroke: {
+                        width: 0,
+                        color: "#ffffff"
+                    },
+                    polygon: {
+                        nb_sides: 5
+                    }
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1,
+                        opacity_min: 0
+                    }
+                },
+                size: {
+                    value: 5,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 0.1
+                    }
+                },
+                line_linked: {
+                    enable: false // Tắt kết nối giữa các hạt
+                },
+                move: {
+                    enable: true,
+                    speed: 1,
+                    direction: "bottom", // Di chuyển xuống dưới giống như hoa đào rơi
+                    random: true,
+                    straight: false,
+                    out_mode: "out"
+                }
+            },
+            interactivity: {
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "repulse"
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: "push"
+                    }
+                },
+                modes: {
+                    repulse: {
+                        distance: 200,
+                        duration: 0.4
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+    </script>
 </body>
 </html>
