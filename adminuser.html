@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Quản lý Người Dùng</title>
+    <link rel="stylesheet" href="admin-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Trang Quản Lý Admin</h1>
+        <button onclick="logout()">Đăng Xuất</button>
+    </header>
+    <main>
+        <section id="user-list">
+            <h2>Danh Sách Người Dùng</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tên Người Dùng</th>
+                        <th>Mật Khẩu</th>
+                        <th>Thao Tác</th>
+                    </tr>
+                </thead>
+                <tbody id="user-table">
+                    <!-- Dữ liệu người dùng sẽ được thêm vào đây -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>© 2025 Huấn Hà. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Hàm giả lập danh sách người dùng từ server (thay bằng API thật khi có backend)
+        const users = [
+            { username: "user1", password: "password1" },
+            { username: "user2", password: "password2" },
+            { username: "user3", password: "password3" }
+        ];
+
+        // Hiển thị danh sách người dùng trong bảng
+        const userTable = document.getElementById('user-table');
+        users.forEach((user, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${user.username}</td>
+                <td>${user.password}</td>
+                <td>
+                    <button onclick="deleteUser(${index})" class="delete-btn">Xóa</button>
+                </td>
+            `;
+            userTable.appendChild(row);
+        });
+
+        // Hàm xóa người dùng (giả lập)
+        function deleteUser(index) {
+            if (confirm('Bạn có chắc muốn xóa người dùng này?')) {
+                users.splice(index, 1);
+                userTable.innerHTML = ''; // Xóa danh sách cũ
+                users.forEach((user, idx) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${idx + 1}</td>
+                        <td>${user.username}</td>
+                        <td>${user.password}</td>
+                        <td>
+                            <button onclick="deleteUser(${idx})" class="delete-btn">Xóa</button>
+                        </td>
+                    `;
+                    userTable.appendChild(row);
+                });
+            }
+        }
+
+        // Hàm đăng xuất
+        function logout() {
+            alert('Đăng xuất thành công!');
+            window.location.href = 'index.html'; // Chuyển hướng về trang chính
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header button {
+            padding: 10px 20px;
+            background: #ff5722;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table th, table td {
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background: #f5f5f5;
+        }
+
+        .delete-btn {
+            padding: 5px 10px;
+            background: #ff5722;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-btn:hover {
+            background: #e64a19;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px;
+            background: #333;
+            color: #fff;
+        }
+    </style>
+</body>
+</html>
