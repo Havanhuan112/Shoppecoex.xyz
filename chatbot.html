@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Nâng Cấp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+        .chat-container {
+            width: 300px;
+            height: 350px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: white;
+            margin: 20px auto;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            margin-bottom: 10px;
+            padding-right: 5px;
+        }
+        .input-container {
+            display: flex;
+        }
+        .input-container input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+        .input-container button {
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        .input-container button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .user-message {
+            background-color: #d1e7dd;
+            text-align: right;
+            justify-content: flex-end;
+        }
+        .bot-message {
+            background-color: #f8d7da;
+            text-align: left;
+            justify-content: flex-start;
+        }
+        .bot-avatar {
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        .bot-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div id="messages" class="messages">
+            <!-- Tin nhắn sẽ hiển thị ở đây -->
+        </div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Nhập tin nhắn...">
+            <button onclick="sendMessage()">Gửi</button>
+        </div>
+    </div>
+
+    <script>
+        const commands = {
+            '/': 'Hiển thị các lệnh mà bot có thể trả lời',
+            'chào': 'Chào hỏi',
+            'bạn tên gì': 'Hiển thị tên của bot',
+            'thời tiết hôm nay': 'Thông tin thời tiết (mô phỏng)',
+            'tạm biệt': 'Kết thúc cuộc trò chuyện',
+        };
+
+        // Hàm trả lời tự động của bot
+        function getBotResponse(userMessage) {
+            const message = userMessage.toLowerCase().trim();
+
+            if (message === '/') {
+                let availableCommands = "Các lệnh mà tôi hiểu:\n";
+                for (let cmd in commands) {
+                    availableCommands += `- ${cmd}: ${commands[cmd]}\n`;
+                }
+                return availableCommands.trim();
+            } else if (message.includes('chào')) {
+                return "Xin chào! Tôi có thể giúp gì cho bạn?";
+            } else if (message.includes('bạn tên gì')) {
+                return "Tôi là ChatBot, trợ lý ảo của Hà Văn Huấn!";
+ } else if (message.includes('helo')) {
+                return "Tôi Có thể giúp gì cho bạn";
+} else if (message.includes('Helo')) {
+                return "Tôi Có thể giúp gì cho bạn";
+
+} else if (message.includes('Chào')) {
+                return "Tôi Có thể giúp gì cho bạn";
+} else if (message.includes('Coder')) {
+                return "Có Cái Con Cặc Này";
+} else if (message.includes('cc')) {
+                return "Tôi Có thể giúp gì cho bạn";
+            } else if (message.includes('thời tiết hôm nay')) {
+                return "Thời tiết hôm nay thật đẹp, nắng nhẹ và gió mát!";
+            } else if (message.includes('tạm biệt')) {
+                return "Tạm biệt! Hẹn gặp lại bạn!";
+            } else {
+                return "Xin lỗi, tôi chưa hiểu yêu cầu của bạn. Hãy thử nhập `/` để xem các lệnh khả dụng.";
+            }
+        }
+
+        // Hàm gửi tin nhắn
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value;
+            if (userInput.trim() !== '') {
+                const messagesDiv = document.getElementById('messages');
+                
+                // Hiển thị tin nhắn người dùng
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.classList.add('message', 'user-message');
+                userMessageDiv.textContent = userInput;
+                messagesDiv.appendChild(userMessageDiv);
+
+                // Xóa input của người dùng
+                document.getElementById('user-input').value = '';
+
+                // Lấy phản hồi từ bot
+                const botResponse = getBotResponse(userInput);
+
+                // Hiển thị phản hồi của bot
+                setTimeout(function () {
+                    const botMessageDiv = document.createElement('div');
+                    botMessageDiv.classList.add('message', 'bot-message');
+                    const botAvatar = document.createElement('img');
+                    botAvatar.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1024px-ChatGPT_logo.svg.png';
+                    botAvatar.alt = 'Bot Avatar';
+                    botAvatar.classList.add('bot-avatar');
+                    
+                    const botTextContainer = document.createElement('div');
+                    const botNameDiv = document.createElement('div');
+                    botNameDiv.classList.add('bot-name');
+                    botNameDiv.textContent = 'ChatBot';
+
+                    const botTextDiv = document.createElement('div');
+                    botTextDiv.textContent = botResponse;
+
+                    botTextContainer.appendChild(botNameDiv);
+                    botTextContainer.appendChild(botTextDiv);
+                    
+                    botMessageDiv.appendChild(botAvatar);
+                    botMessageDiv.appendChild(botTextContainer);
+                    messagesDiv.appendChild(botMessageDiv);
+
+                    // Cuộn xuống cuối
+                    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+                }, 500); // Thêm độ trễ 500ms để phản hồi giống bot thật
+            }
+        }
+    </script>
+</body>
+</html>

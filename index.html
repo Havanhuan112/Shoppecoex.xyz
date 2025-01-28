@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Thêm font Robot từ Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Thêm Font Awesome cho các icon ngân hàng -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <title>Shop Huấn Hà🌎</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<!-- Menu 3 gạch ở góc phải -->
-<div id="menu-toggle" class="menu-container" onclick="toggleMenu()">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+
 <!-- Thêm thẻ audio để phát nhạc tự động -->
     <audio id="background-music" autoplay loop>
         <source src="https://files.catbox.moe/31gq5j.mp3" type="audio/mp3">
@@ -22,15 +21,13 @@
 <!-- Form Thông Báo khi vào trang web -->
 <div id="welcome-form" class="welcome-form">
     <div class="form-content">
-    
-        <h2>Shoppocoex.xyz</h2>
-        <p><strong>Chào Mừng Bạn Đã Đến Với Shop:</strong></p>
-        <p>Hà Văn Huấn</p>
-        <p><strong>Zalo :</strong></p>
-        <p>0325575642</p>
+        <h2 class="glowing-text">Shop Huấn Hà Vn
+       <p>Hà Văn Huấn Bán Tất Cả Các Loại Files Uy Tín Chất Lượng Cao
+Zalo : 0325575642</p>
        <button onclick="contactUs('facebook')">Liên Hệ qua Facebook</button>
 <button onclick="contactUs('zalo')">Liên Hệ qua Zalo</button>
         <span class="close-btn" onclick="closeWelcomeForm()">Đóng</span>
+</h2>
     </div>
 </div>
 
@@ -41,7 +38,12 @@
         </ul>
 <ul>
     <li>
-        <button onclick="location.href='contact.html'">Liên Hệ</button>
+        <button onclick="location.href='contact_form.html'">Liên Hệ</button>
+    </li>
+</ul>
+<ul>
+    <li>
+        <button onclick="location.href='chatbot.html'">Chatbot</button>
     </li>
 </ul>
 <ul>
@@ -130,7 +132,14 @@ Ngân Hàng:</strong> Mb Bank</p>
         
     </main>
     <header>
+    <section class="product">
 <!-- Khu vực hiển thị profile sau khi đăng nhập -->
+<!-- Menu 3 gạch ở góc phải -->
+    <div id="menu-toggle" class="menu-container" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
         <div id="profile" class="hidden">
               <img id="profileIcon" src="" alt="Profile Icon" width="150" height="150">
                 <div id="username-display" class="blink-text"></div>
@@ -138,6 +147,7 @@ Ngân Hàng:</strong> Mb Bank</p>
              <button id="logout-btn" onclick="logout()">Đăng Xuất</button>
     </header>
     <main>
+    </section>
 <section class="product">
     
           <p class="small-font" style="color: #ff5722;">Thông Báo Ngày 28/1/2025 👀</p>
@@ -159,38 +169,77 @@ Ngân Hàng:</strong> Mb Bank</p>
     
   </section>
     <section class="product">
-        <img src="https://i.imgur.com/smselrp.jpeg" alt="Hình ảnh 1">
+        <img src="https://viresa.org.vn/service-apis/uploads/large_luat_thi_dau_Freefire_b24c1bcbf7.jpg" alt="Hình ảnh 1">
         <h3>Hỗ Trợ Kéo Tâm Sử Dụng All Thiết Bị (Android , Ios )</h3>
-        <p>Giá: 50,000 VNĐ</p>
+        <p><strong>Giá: 50,000 VNĐ</strong></p>
+<!-- Dropdown (Chọn Mục) -->
+<select class="dropdown">
+      <option value="1">Không </option>
+    
+      <option value="2">50.000₫ </option>
+      <option value="3">100.000₫ </option>
+    </select>
         <button onclick="window.location.href='payment1.html'">Mua Ngay<span class="hot">HOT</span></button>
     </section>
 
     <section class="product">
-        <img src="https://i.imgur.com/3hq4qfO.jpeg" alt="Hình ảnh 2">
+        <img src="https://viresa.org.vn/service-apis/uploads/large_luat_thi_dau_Freefire_b24c1bcbf7.jpg" alt="Hình ảnh 2">
         <h3>Kéo Nhẹ Aim Đầu Bảo Hành Antiband , Sử Dụng Leo Rank All Map , Tử Chiến , Sinh Tồn (sử dụng 1Ob )</h3>
-        <p>Giá: 150,000 VNĐ</p>
+        <p><strong>Giá: 150,000 VNĐ</strong></p>
+<!-- Dropdown (Chọn Mục) -->
+<select class="dropdown">
+      <option value="1">Không </option>
+    
+      <option value="2">150.000₫ </option>
+      <option value="3">250.000₫ </option>
+    </select>
         <button onclick="window.location.href='payment2.html'">Mua Ngay<span class="hot">HOT</span></button>
     </section>
 
     <section class="product">
-        <img src="https://i.imgur.com/eI3qaTe.jpeg" alt="Hình ảnh 3">
+        <img src="https://viresa.org.vn/service-apis/uploads/large_luat_thi_dau_Freefire_b24c1bcbf7.jpg" alt="Hình ảnh 3">
         <h3>Sử Dụng Tất Cả Thiết Bị , Chỉ Càn Nhích Nhẹ Nút Bắn Là Hesot - Ghim đầu chặt Khi kéo ( Bảo Hành An toàn All Map)</h3>
-        <p>Giá: 300,000 VNĐ</p>
+        <p><strong>Giá: 300,000 VNĐ</strong></p>
+<!-- Dropdown (Chọn Mục) -->
+<select class="dropdown">
+      <option value="1">Không </option>
+    
+      <option value="2">300.000₫ </option>
+      <option value="3">400.000₫ </option>
+    </select>
         <button onclick="window.location.href='payment3.html'">Mua Ngay<span class="hot">HOT</span></button>
     </section>
 
       <section class="product">
-    <img src="https://i.imgur.com/UmLVPbX.jpeg" alt="Hình ảnh 4">
+    <img src="https://viresa.org.vn/service-apis/uploads/large_luat_thi_dau_Freefire_b24c1bcbf7.jpg" alt="Hình ảnh 4">
     <h3>Bảo Hành All Khi Chơi - Leo Rank All Map Và Sử Dụng Tất Cả Ob</h3>
-    <p>Giá: 500,000 VNĐ</p>
+    <p><strong>Giá: 500,000 VNĐ</p></strong>
+<!-- Dropdown (Chọn Mục) -->
+<select class="dropdown">
+      <option value="1">Không </option>
+    
+      <option value="2">500.000₫ </option>
+      <option value="3">550.000₫ </option>
+    </select>
     <button onclick="window.location.href='payment4.html'">Mua Ngay 
       <span class="hot">HOT</span>
     </button>
   </section>
+<section>
+   <!-- Phần menu liên hệ -->
+  <div class="contact-menu">
+    <h3>Liên hệ</h3>
+    <!-- Icon Email -->
+      <div><i class="fas fa-envelope"></i><span>Email: vanhuanha56@gmail.com</span></div>
+      
+      <!-- Icon Điện Thoại -->
+      <div><i class="fas fa-phone-alt"></i><span>SĐT: +84 325 575 642</span></div>
+   
+</section>
 </main>
-    <footer>
-        <p>&copy; 2025 - Bản quyền thuộc về Hà Văn Huấn</p>
-    </footer>
+        
+    
     <script src="script.js"></script>
+    
 </body>
 </html>

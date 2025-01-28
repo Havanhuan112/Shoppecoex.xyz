@@ -3,11 +3,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9;
+    background-color: #ffffff;
 }
 
 header {
-    background-color: #333;
+    background-color: #ffffff;
     color: white;
     text-align: center;
     padding: 1rem 0;
@@ -71,15 +71,6 @@ main {
       50% { opacity: 0.5; }
     }
 
-footer {
-    background-color: transparent;
-    color: Black;
-    text-align: center;
-    padding: 1rem 0;
-    margin-top: 20px;
-    border: 2px solid Black;
-    border-radius: 10px
-}
 
 
 #auth button {
@@ -204,7 +195,7 @@ form {
 }
 #logout-btn {
     background-color: transparent;
-    color: white;
+    color: black;
     border: 1px solid lime;
     border-radius: 20px; 
     padding: 5px 10px;
@@ -444,8 +435,75 @@ input {
     margin: 10px 0;
 }
 
+// chat bot 
+   /* Hiệu ứng chữ phát sáng */
+    body {
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #121212; /* Nền tối */
+    }
 
+    /* Áp dụng hiệu ứng phát sáng cho văn bản */
+    .glowing-text {
+      color: white;
+      font-size: 50px;
+      text-align: center;
+      text-shadow: 
+        0 0 5px #ffffff,
+        0 0 10px #ffffff,
+        0 0 15px #ff00ff,
+        0 0 20px #ff00ff,
+        0 0 25px #ff00ff,
+        0 0 30px #ff00ff,
+        0 0 35px #ff00ff;
+    }
+  // Chữ hiển thị của bố huấn 
+/* Phần thông tin liên hệ */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 30px;
+    }
 
-// bảo trì 
+    /* Mỗi dòng thông tin */
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      font-size: 20px;
+      margin: 10px 0;
+    }
 
+    /* Icon */
+    .contact-info i {
+      margin-right: 10px;
+      color: #33ff33;
+    }
 
+ /* Dropdown style */
+    .dropdown {
+      background-color: #333;
+      color: #33ff33;
+      font-size: 10;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 100px;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    .dropdown:focus {
+      outline: none; /* Remove the blue outline when clicked */
+    }
+
+    .dropdown option {
+      background-color: #333;
+      color: #33ff33;
+    }
+
+  
