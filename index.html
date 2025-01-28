@@ -13,12 +13,12 @@
     <link rel="icon" href="https://cdn.vinaenter.edu.vn/wp-content/uploads/2024/08/hinh-nen-wibu.jpg" type="image/png">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
-<body> 
-        
+<body>   
+
     <div id="particles-js"></div>   
 <!-- Thêm thẻ audio để phát nhạc tự động -->
     <audio id="background-music" autoplay loop>
-        <source src="https://files.catbox.moe/31gq5j.mp3" type="audio/mp3">
+        <source src="https://files.catbox.moe/jhgnd2.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
 <!-- Form Thông Báo khi vào trang web -->
@@ -151,6 +151,14 @@ Ngân Hàng:</strong> Mb Bank</p>
     </header>
     <main>
     </section>
+<section class="product">
+        <p> IP : <span id="ip-address">Đang tải...</span></p>
+          <div class="stats">
+            <i class="fas fa-eye"></i>
+            <span id="visitor-count">Đang tải số lượng...</span> Truy Cập
+       
+</div>    
+</section>
 <section class="product">
           <p class="small-font" style="color: #ff5722;">Thông Báo Ngày 28/1/2025 👀</p>
 <i class="fas fa-user">Hà Văn Huấn</i>
@@ -323,6 +331,32 @@ Ngân Hàng:</strong> Mb Bank</p>
             },
             retina_detect: true
         });
+    </script>
+
+    <script>
+        // Sử dụng API ipify để lấy IP
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('ip-address').innerText = data.ip;
+            })
+            .catch(error => {
+                console.log('Không thể lấy IP', error);
+                document.getElementById('ip-address').innerText = 'Không thể lấy IP';
+            });
+
+        // Giả sử bạn lưu trữ số lượng người truy cập trên server hoặc trong LocalStorage
+        // Cách đơn giản là sử dụng LocalStorage để lưu trữ số lượng người truy cập
+        let visitorCount = localStorage.getItem('visitorCount');
+        if (!visitorCount) {
+            visitorCount = 1;  // Nếu chưa có, bắt đầu từ 1
+        } else {
+            visitorCount = parseInt(visitorCount) + 1;
+        }
+
+        localStorage.setItem('visitorCount', visitorCount);
+        document.getElementById('visitor-count').innerText = visitorCount;
+
     </script>
 </body>
 </html>
