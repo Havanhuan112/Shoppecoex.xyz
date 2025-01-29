@@ -141,18 +141,27 @@
 /* Video style */
     .video-container {
       margin-top: 30px;
-      width: 80%;
-      max-width: 800px;
+      width: 100%;
+      max-width: 500px;
       border-radius: 10px;
       overflow: hidden;
     }
 
     video {
-      width: 100%;
+      width: 40%;
       height: auto;
     }
 
-   
+           .original-price {
+            text-decoration: line-through;
+            color: gray;
+            margin-right: 10px;
+        }
+        .discounted-price {
+            font-weight: bold;
+            color: red;
+        }
+  
    
     </style>
 </head>
@@ -162,7 +171,8 @@
     </header>
     <main>
         <div id="payment-details">
-             <p class="bold-text">Giá Bán : <p class="light-text">150.000₫ VND</p></p>
+             <span class="original-price">150.000₫</span>
+        <span class="discounted-price">80.000₫</span>
 <!-- Thêm video -->
     <div class="video-container">
       <video id="videoPlayer" controls>
@@ -177,7 +187,7 @@
             <p><strong>Ngân Hàng:</strong> MB Bank</p>
             <p><strong>Số tài khoản:</strong> 0325575642</p>
 <p><strong>Nếu Đã Chuyển Khoản Hãy Liên Hệ Zalo : </strong>0325575642</p>
-            <p><strong>Chủ tài khoản:</strong> Hà Văn Huấn</p>                             <p><strong>Nội Dung:<coder id="code">Aim150KthanhtoanVisa</coder>Aim150KthanhtoanVisa</strong>
+            <p><strong>Chủ tài khoản:</strong> Hà Văn Huấn</p>                             <p><strong>Nội Dung:<coder id="code">Aim150KthanhtoanVisa</coder>Aim1thanhtoanVisa</strong>
 <button onclick="copyToClipboard(document.getElementById('code').innerText)">Sao chép nội dung</button>
         </div>
 

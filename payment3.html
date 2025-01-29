@@ -142,18 +142,27 @@
 /* Video style */
     .video-container {
       margin-top: 30px;
-      width: 80%;
-      max-width: 800px;
+      width: 100%;
+      max-width: 500px;
       border-radius: 10px;
       overflow: hidden;
     }
 
     video {
-      width: 100%;
+      width: 40%;
       height: auto;
     }
 
-   
+           .original-price {
+            text-decoration: line-through;
+            color: gray;
+            margin-right: 10px;
+        }
+        .discounted-price {
+            font-weight: bold;
+            color: red;
+        }
+  
    
     </style>
 </head>
@@ -163,7 +172,8 @@
     </header>
     <main>
         <div id="payment-details">
-             <p class="bold-text">Giá Bán : <p class="light-text">300.000₫ VND</p></p>
+            <span class="original-price">300.000₫</span>
+        <span class="discounted-price">180.000₫</span>
 <!-- Thêm video -->
     <div class="video-container">
       <video id="videoPlayer" controls>

@@ -153,7 +153,16 @@
       height: auto;
     }
 
-   
+           .original-price {
+            text-decoration: line-through;
+            color: gray;
+            margin-right: 10px;
+        }
+        .discounted-price {
+            font-weight: bold;
+            color: red;
+        }
+  
    
     </style>
 </head>
@@ -163,7 +172,8 @@
     </header>
     <main>
         <div id="payment-details">
-             <p class="bold-text">Giá Bán : <p class="light-text">500.000₫ VND</p></p>
+             <span class="original-price">500.000₫</span>
+        <span class="discounted-price">280.000₫</span>
 <!-- Thêm video -->
     <div class="video-container">
       <video id="videoPlayer" controls>
