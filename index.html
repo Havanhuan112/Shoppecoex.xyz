@@ -12,54 +12,35 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="https://cdn.vinaenter.edu.vn/wp-content/uploads/2024/08/hinh-nen-wibu.jpg" type="image/png">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-        <style>
-        .price {
-            font-size: 20px;
-        }
-        .original-price {
-            text-decoration: line-through;
-            color: gray;
-            margin-right: 10px;
-        }
-        .discounted-price {
-            font-weight: bold;
-            color: red;
-        }
-        .sale-icon {
-            font-size: 24px;
-            color: orange;
-            margin-right: 10px;
-        }
-    </style>
 </head>
-<body>   
+<body>
+<!-- Form Thông Báo khi vào trang web -->
+<div id="welcome-form" class="welcome-form">
+    <div class="form-content">
+  <!-- Hình ảnh có hiệu ứng động và hình tròn -->
+  <div class="imageh3-container">
+    <img src="https://cdn-media.sforum.vn/storage/app/media/thanhhuyen/%E1%BA%A3nh%20%C4%91%E1%BB%99ng%20anime/1/anh-dong-anime-10.gif" alt="Hình ảnh" class="round-image" id="round-image">
+  </div>  
+  <i class="fas fa-comments"></i>
+Hà Văn Huấn !
+Dịch Vụ Hỗ Trợ Game Hack Game , Data Hack Game Antiband , Files Hỗ Trợ Kéo Tâm Uy Tín Chất Lượng 
+<i class="fas fa-coins"></i> • Mọi Thắc Mắc Liên Hệ Qua Zalo 0325575642
+<button class="close-menu-btn" onclick="closeWelcomeForm()">Đóng</button>
+        
+</h2>
+    </div>
+</div>
+  
     <div id="particles-js"></div>   
 <!-- Thêm thẻ audio để phát nhạc tự động -->
     <audio id="background-music" autoplay loop>
         <source src="https://files.catbox.moe/wody9q.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
-<!-- Form Thông Báo khi vào trang web -->
-<div id="welcome-form" class="welcome-form">
-    <div class="form-content">
-        
-       <li>
-  <i class="fas fa-comments">Hà Văn Huấn !
-Dịch Vụ Hỗ Trợ Game Hack Game , Data Hack Game Antiband , Files Hỗ Trợ Kéo Tâm Uy Tín Chất Lượng Cao</i>
-<i class="fas fa-coins"></i> • Mọi Thắc Mắc Liên Hệ Qua Zalo 0325575642
-</li>
-      
-<button class="close-menu-btn" onclick="closeWelcomeForm()">Đóng</button>
-        
-</h2>
-    </div>
-</div>
 
     <!-- Menu Chứa các mục -->
     <div id="menu" class="hidden">
-        <ul>
-            <li><i class="fas fa-coins" onclick="openDepositOptions()"></i> Nạp Tiền<!-- Coins Icon --></li>
-        </ul>
+        
 <ul>
     <li>
 <i class="fas fa-envelope" onclick="location.href='contact_form.html'"></i>Liên Hệ
@@ -69,12 +50,6 @@ Dịch Vụ Hỗ Trợ Game Hack Game , Data Hack Game Antiband , Files Hỗ Tr�
 <ul>
     <li>
 <i class="fas fa-comment-alt" onclick="location.href='chatbot.html'"></i> ChatBot 
-        
-    </li>
-</ul>
-<ul>
-    <li>
-<i class="fas fa-clock" onclick="location.href='thanhtoannhanh.html'"></i> Nạp Nhanh
         
     </li>
 </ul>
@@ -95,35 +70,7 @@ Dịch Vụ Hỗ Trợ Game Hack Game , Data Hack Game Antiband , Files Hỗ Tr�
 </ul>
 </li>
     </div>
-
-    <!-- Mục Nạp Tiền -->
-    <div id="deposit-options" class="hidden">
-        <button onclick="openBankDeposit()">Nạp Bank</button>
-        <button onclick="openCardDeposit()">Nạp Thẻ Cào</button>
-          <button class="close-menu-btn" onclick="closeDepositOptions()">Đóng</button>
-    </div>
-
-    <!-- Form Nạp Bank -->
-    <div id="bank-deposit" class="hidden">
-            <h3><strong>Thông tin tài khoản Ngân Hàng:</strong></h3>
-    <p><strong>
-Ngân Hàng:</strong> Mb Bank</p>
-        <p><strong>Số tài khoản:</strong> 0325575642 <button class="copy-btn" onclick="copyToClipboard('1234567890')"><img src="https://i.imgur.com/iaGxoPH.png" alt="Sao chép"></button></p>
-    <p><strong>Chủ Tài Khoản:</strong> Hà Văn Huấn </p>
-       <p><strong>Mã Nạp:</strong> <span id="deposit-code"></span> <button class="copy-btn" onclick="copyToClipboard(document.getElementById('deposit-code').innerText)"><img src="https://i.imgur.com/iaGxoPH.png" alt="Sao chép"></button></p> 
-        <button class="close-menu-btn" onclick="closeBankDeposit()">Đóng</button>
-    </div>
-
-    <!-- Form Nạp Thẻ Cào -->
-    <div id="card-deposit" class="hidden">
-        <h3>Nhập thông tin thẻ cào:</h3>
-        <input type="text" id="seri" placeholder="Nhập seri thẻ cào" required>
-        <input type="text" id="pin" placeholder="Nhập mã thẻ cào" required>
-                <button onclick="submitCard()">Gửi</button>
-        <button class="close-menu-btn" onclick="closeCardDeposit()">Đóng</button>
-    </div>
-
-    <!-- Đóng menu -->
+   <!-- Đóng menu -->
     <div id="overlay" class="overlay hidden" onclick="toggleMenu()"></div>
  <!-- Kết Nối Đi nào menu 3 gạch -->
 <div id="auth">
@@ -167,8 +114,10 @@ Ngân Hàng:</strong> Mb Bank</p>
       <span></span>
       <span></span>
     </div>
-        <div id="profile" class="hidden"> 
-             <img src="https://i.pinimg.com/736x/aa/a6/fe/aaa6fe6e8ebebaf5fd5579ff717460ed.jpg" alt="User Icon" class="user-icon">
+        <div id="profile" class="hidden">            <div class="image-container">
+        <div class="image-2"></div> <!-- Ảnh thứ hai -->
+        <div class="image-1"></div> <!-- Ảnh thứ nhất -->
+    </div>
                 <div id="username-display" class="blink-text"></i></div>
         </div>
              <button id="logout-btn" onclick="logout()">Đăng Xuất</button>
@@ -180,9 +129,15 @@ Ngân Hàng:</strong> Mb Bank</p>
           <div class="stats">
             <i class="fas fa-eye"></i>
             <span id="visitor-count">Đang tải số lượng...</span>
-<img src="https://i.imgur.com/pNU6xIm.png" alt="Hình ảnh 1">
-  Lì xì đi nào ae ơi -))     
+  <div class="imageh1-container">
+<img src="https://media.tenor.com/McPQygGOuXYAAAAj/gladgers-hacker-gers-guardians-of-galaxy.gif" alt="Hình ảnh đẹp">
 </div>    
+</div> 
+   <!-- Hình ảnh có hiệu ứng nhấp nháy và di chuyển -->
+  <div class="imageh4-container">
+    <div class="image-overlay"></div>
+    <img src="https://i.imgur.com/XN0M9eY.png" alt="Hình ảnh nhấp nháy và di chuyển" class="moving-blinking-image">
+  </div>
 </section>
 <section class="product">
           <p class="small-font" style="color: #ff5722;">Thông Báo Ngày 29/1/2025 👀</p>
@@ -206,35 +161,47 @@ Ngân Hàng:</strong> Mb Bank</p>
     
   </section>
     <section class="product">
-        <img src="https://viresa.org.vn/service-apis/uploads/large_luat_thi_dau_Freefire_b24c1bcbf7.jpg" alt="Hình ảnh 1">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/950706110615424064/AB63DE20087EBA3DCC66F436D52AEAA93DCFEEEB/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" alt="Hình ảnh 1">
         <h3>Hỗ Trợ Kéo Tâm Sử Dụng All Thiết Bị (Android , Ios )</h3>
         <p><strong>Giá: 50,000 VNĐ</strong></p>
-        <button onclick="window.location.href='payment1.html'">Mua Ngay        <i class="fas fa-download"></i><span class="hot">HOT</span></button>
+<div class="imageh1-container">
+<img src="https://anhanime.me/wp-content/uploads/2024/03/anh-dong-anime_14.gif" alt="Hình ảnh đẹp">
+</div>
+        <button onclick="window.location.href='payment1.html'">Mua Ngay<span class="hot">HOT
+</span></button>
     </section>
 
     <section class="product">
-        <img src="https://viresa.org.vn/service-apis/uploads/large_luat_thi_dau_Freefire_b24c1bcbf7.jpg" alt="Hình ảnh 2">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/950706110615424064/AB63DE20087EBA3DCC66F436D52AEAA93DCFEEEB/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" alt="Hình ảnh 2">
         <h3>Kéo Nhẹ Aim Đầu Bảo Hành Antiband , Sử Dụng Leo Rank All Map , Tử Chiến , Sinh Tồn (sử dụng 1Ob )</h3>
          <span class="original-price">150.000₫</span>
         <span class="discounted-price">80.000₫</span>
+<div class="imageh1-container">
+<img src="https://anhanime.me/wp-content/uploads/2024/03/anh-dong-anime_14.gif" alt="Hình ảnh đẹp">
+</div>
         <button onclick="window.location.href='payment2.html'">Mua Ngay        <i class="fas fa-tags sale-icon"></i><span class="hot">Sale</span></button>
     </section>
 
     <section class="product">
-        <img src="https://viresa.org.vn/service-apis/uploads/large_luat_thi_dau_Freefire_b24c1bcbf7.jpg" alt="Hình ảnh 3">
+        <img src="https://steamuserimages-a.akamaihd.net/ugc/950706110615424064/AB63DE20087EBA3DCC66F436D52AEAA93DCFEEEB/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" alt="Hình ảnh 3">
         <h3>Sử Dụng Tất Cả Thiết Bị , Chỉ Càn Nhích Nhẹ Nút Bắn Là Hesot - Ghim đầu chặt Khi kéo ( Bảo Hành An toàn All Map)</h3>
         <span class="original-price">300.000₫</span>
         <span class="discounted-price">180.000₫</span>
 <!-- Dropdown (Chọn Mục) -->
-        <button onclick="window.location.href='payment3.html'">Mua Ngay      <i class="fas fa-tags sale-icon"></i><span class="hot">Sale</span></button>
+<div class="imageh1-container">
+<img src="https://anhanime.me/wp-content/uploads/2024/03/anh-dong-anime_14.gif" alt="Hình ảnh đẹp">
+</div>        
+<button onclick="window.location.href='payment3.html'">Mua Ngay      <i class="fas fa-tags sale-icon"></i><span class="hot">Sale</span></button>
     </section>
 
       <section class="product">
-    <img src="https://viresa.org.vn/service-apis/uploads/large_luat_thi_dau_Freefire_b24c1bcbf7.jpg" alt="Hình ảnh 4">
-    <h3>Bảo Hành All Khi Chơi - Leo Rank All Map Và Sử Dụng Tất Cả Ob</h3>
+    <img src="https://steamuserimages-a.akamaihd.net/ugc/950706110615424064/AB63DE20087EBA3DCC66F436D52AEAA93DCFEEEB/?imw=5000&imh=5000&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false" alt="Hình ảnh 4">
+    <h3>Aim Super Bảo Hành All Khi Chơi - Leo Rank All Map Và Sử Dụng Tất Cả Ob</h3>
     <span class="original-price">500.000₫</span>
         <span class="discounted-price">280.000₫</span>
-
+<div class="imageh1-container">
+<img src="https://anhanime.me/wp-content/uploads/2024/03/anh-dong-anime_14.gif" alt="Hình ảnh đẹp">
+</div>
         <button onclick="window.location.href='payment4.html'">Mua Ngay        
         <i class="fas fa-tags sale-icon"></i><span class="hot">Sale</span></button>
   </section>
@@ -380,6 +347,69 @@ Zalo
 
         localStorage.setItem('visitorCount', visitorCount);
         document.getElementById('visitor-count').innerText = visitorCount;
+//Hoa đào rơi 
  </script>
+<style>
+ .original-price {
+            text-decoration: line-through;
+            color: gray;
+            margin-right: 10px;
+        }
+        .discounted-price {
+            font-weight: bold;
+            color: red;
+        }
+          .sale-icon {
+            font-size: 24px;
+            color: orange;
+            margin-right: 10px;
+        }
+        
+
+        .imageh1-container img {
+            border-radius: 15px; /* Bo góc của hình ảnh */
+            
+            width: 10%;
+            height: 10%;
+            display: block;
+        }
+
+        
+             /* Phần chứa ảnh */
+        .image-container {
+            position: relative;
+            width: 60px; /* Kích thước phần chứa */
+            height: 60px;
+            border-radius: 50%; /* Hình tròn */
+            overflow: hidden;
+        }
+
+        /* Ảnh 1 (ở giữa) */
+        .image-1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 120%; /* Kích thước ảnh giữa */
+            height: 120%;
+            transform: translate(-50%, -50%);
+            background-image: url('https://i.imgur.com/nIu0vmB.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%; /* Hình tròn */
+        }
+
+        /* Ảnh 2 (đội lên) */
+        .image-2 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://symbols.vn/wp-content/uploads/2021/12/Tong-hop-Anh-nen-dong-dep-co-be-de-thuong.gif');
+            background-size: cover;
+            background-position: center;
+        }
+        
+   </style>
 </body>
 </html>

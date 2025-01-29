@@ -1,260 +1,413 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thanh Toán</title>
-    <style>
-        /* Đặt font chữ và kiểu chung cho toàn bộ trang */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Khung cho phần nội dung chính */
-        #payment-details, #bank-deposit {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px auto;
-            width: 80%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Hiệu ứng chữ nhấp nháy cho tiêu đề */
-        h1 {
-            text-align: center;
-            color: #333;
-            font-size: 2em;
-            animation: blink 1.5s infinite alternate;
-        }
-
-        /* Hiệu ứng chữ nhấp nháy */
-        @keyframes blink {
-            0% {
-                color: #000;
-            }
-            100% {
-                color: #007bff;
-            }
-        }
-
-        /* Hiệu ứng cho các tiêu đề */
-        h2, h3 {
-            color: #333;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        /* Tạo đường viền cho các thông tin */
-        p {
-            font-size: 1em;
-            color: #555;
-            line-height: 1.6;
-        }
-
-        /* Khung cho thông tin chuyển khoản */
-        #bank-deposit {
-            border-top: 2px solid #007bff;
-            margin-top: 20px;
-        }
-
-        /* Hiệu ứng cho nút sao chép */
-        button {
-            width: 100%;
-            padding: 10px 20px;
-            margin-top: 10px;
-            background-color: #007bff;
-            border: none;
-            color: white;
-            font-size: 1em;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Thêm khoảng cách giữa các phần tử */
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 0.9em;
-            color: #777;
-        }
-
-        /* Khung cho thông báo "Chờ xử lý" */
-        #processing-message {
-            color: #ff4500;
-            font-size: 1.2em;
-            font-weight: bold;
-            text-align: center;
-            margin-top: 20px;
-            display: none;
-        }
-/* Cơ bản cho nút */
-.my-button {
-  background-color: #007bff; /* Màu nền */
-  width: 100%;
-  color: white; /* Màu chữ */
-  border: none; /* Không viền */
-  padding: 10px 20px; /* Khoảng cách bên trong */
-  font-size: 1em; /* Kích thước chữ */
-  cursor: pointer; /* Con trỏ hiển thị khi hover */
-  border-radius: 5px; /* Bo góc */
-  transition: all 0.3s ease; /* Hiệu ứng chuyển đổi mượt mà */
+    <title>Thanh Toán Ngân Hàng</title>
+   <style>
+/* Toàn bộ giao diện */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #000, #000);
+    color: #fff;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Hiệu ứng khi di chuột vào nút */
-.my-button:hover {
-  background-color: #45a049; /* Đổi màu nền */
-  transform: scale(1.1); /* Phóng to nhẹ */
+.container {
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* Hiệu ứng khi nhấn nút */
-.my-button:active {
-  background-color: #3e8e41; /* Màu nền khi nhấn */
-  transform: scale(0.95); /* Thu nhỏ nhẹ */
+.hologram-effect {
+    font-size: 2.5rem;
+    color: #00ffcc;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 40px #00ffcc;
 }
-    .bold-text {
-      font-weight: bold;
-    }
 
-    .light-text {
-      font-weight: 300;
-    }
+.payment-form {
+    margin-top: 20px;
+}
 
-         #loading {
-            font-size: 20px;
-            font-weight: bold;
-        }
-        #code {
-            font-size: 24px;
-            font-weight: bold;
-            color: green;
-            display: none;
-        }
-/* Video style */
-    .video-container {
-      margin-top: 30px;
-      width: 100%;
-      max-width: 500px;
-      border-radius: 10px;
-      overflow: hidden;
-    }
+label {
+    font-size: 1rem;
+    display: block;
+    margin: 15px 0 5px;
+}
 
-    video {
-      width: 40%;
-      height: auto;
-    }
+input {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+    font-size: 1rem;
+}
 
-           .original-price {
-            text-decoration: line-through;
-            color: gray;
-            margin-right: 10px;
-        }
-        .discounted-price {
-            font-weight: bold;
-            color: red;
-        }
-  
-   
-    </style>
+input[readonly] {
+    background: #333;
+    color: #aaa;
+}
+
+button {
+    padding: 12px 20px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(90deg, #00ffcc, #0066ff);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 255, 204, 0.6);
+}
+
+/* Hiển thị thông báo thành công */
+.success-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.popup-content {
+    text-align: center;
+    background: rgba(0, 255, 204, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    color: #00ffcc;
+    animation: popup-animation 0.5s ease-in-out;
+}
+
+.checkmark-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: linear-gradient(120deg, #00ffcc, #0066ff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: scale-up 0.8s ease-in-out;
+}
+
+.checkmark {
+    width: 25px;
+    height: 12px;
+    border-left: 5px solid #fff;
+    border-bottom: 5px solid #fff;
+    transform: rotate(-45deg);
+}
+
+/* Hiệu ứng động */
+@keyframes popup-animation {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes scale-up {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+select {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+/* Popup sao chép thành công */
+.copy-success-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.copy-success-popup .popup-content {
+    text-align: center;
+    background: rgba(0, 255, 0, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    color: #00ff00;
+    animation: popup-animation 0.5s ease-in-out;
+}
+
+.copy-success-popup h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #00ff00;
+}
+
+/* Định dạng cho ô mã giao dịch */
+.copyable {
+    cursor: pointer;
+    color: #00ffcc;
+    text-decoration: underline;
+}
+
+.copyable:hover {
+    color: #00ff99;
+    background: #333;
+    transition: 0.3s;
+}
+/* Popup cảnh báo */
+.alert-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Mặc định ẩn */
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 0, 0, 0.7); /* Màu nền cảnh báo */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.alert-popup .popup-content {
+    text-align: center;
+    background: #fff;
+    color: #ff0000;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(0.8); /* Bắt đầu nhỏ hơn */
+    animation: scaleIn 0.3s ease-in-out;
+}
+
+.alert-popup h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ff0000;
+}
+
+.alert-popup p {
+    font-size: 1rem;
+}
+
+/* Hiệu ứng động */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.8);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+/* Container chứa hình ảnh */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+</style>
 </head>
 <body>
-    <header>
-        <h1>Thanh Toán</h1>
-    </header>
-    <main>
-        <div id="payment-details">
-            <span class="original-price">300.000₫</span>
-        <span class="discounted-price">180.000₫</span>
-<!-- Thêm video -->
-    <div class="video-container">
-      <video id="videoPlayer" controls>
-        <source src="https://files.catbox.moe/cmyj1b.mp4" type="video/mp4">
-        Trình duyệt của bạn không hỗ trợ thẻ video.
-      </video>
-    </div> 
-            
-        </div>
-        <div id="bank-deposit">
-            <h3>Thông tin chuyển khoản:</h3>
-            <p><strong>Ngân Hàng:</strong> MB Bank</p>
-            <p><strong>Số tài khoản:</strong> 0325575642</p>
-<p><strong>Nếu Đã Chuyển Khoản Hãy Liên Hệ Zalo : </strong>0325575642</p>
-            <p><strong>Chủ tài khoản:</strong> Hà Văn Huấn</p>                             <p><strong>Nội Dung:<coder id="code">Aim300KthanhtoanVisa</coder>Aim300KthanhtoanVisa</strong>
-<button onclick="copyToClipboard(document.getElementById('code').innerText)">Sao chép nội dung</button>
+    <div class="container">
+        <h1 class="hologram-effect">THANH TOÁN NGÂN HÀNG</h1>
+        <div class="payment-form">
+                       <!-- Chọn ngân hàng -->
+           <label for="bank">Chọn ngân hàng:</label>
+            <select id="bank">
+<option value="0"></option>
+                <option value="Mbbank">Mbbank Quan Doi</option>
+                <option value="Momo">Momo </option>
+                
+            </select>
+
+            <!-- Hiển thị số tài khoản -->
+            <label for="account-number">Số tài khoản:</label>
+            <input type="text" id="account-number" readonly>
+
+            <!-- Hiển thị tên tài khoản -->
+            <label for="account-name">Tên tài khoản:</label>
+            <input type="text" id="account-name" readonly>
+     
+            <label for="amount">Số tiền thanh toán (VNĐ):</label>
+            <input type="number" id="amount" placeholder="Nhập số tiền thanh toán">
+
+                        <label for="transaction-code">Mã giao dịch (bấm để sao chép):</label>
+            <input type="text" id="transaction-code" readonly class="copyable">
+
+        
+
+            <button id="confirm-btn">Xác nhận thanh toán</button>
         </div>
 
-        <!-- Nút xác nhận đã chuyển khoản -->
-        <div id="payment-details">
-            <button class="my-button" onclick="confirmPayment()">Xác nhận đã chuyển khoản</button>
+        <div class="success-popup" id="success-popup">
+            <div class="popup-content">
+                <div class="checkmark-container">
+                    <div class="checkmark"></div>
+                </div>
+                <h2>Thanh toán thành công</h2>
+                <p>Số tiền: <span id="amount-success"></span> VNĐ</p>
+<p>Vui Lòng Liên Hệ Với Admin Để Được Hỗ Trợ  Xin Cảm Ơn !
+            </div>
         </div>
+        <!-- Popup cảnh báo -->
+        <div class="alert-popup" id="alert-popup">
+            <div class="popup-content alert-content">
+                <h2>Cảnh báo</h2>
+                <p>Vui lòng nhập số tiền thanh toán trước khi xác nhận!</p>
+<!-- Hình ảnh có hiệu ứng nhấp nháy và di chuyển -->
+  
 
-        <!-- Thông báo "Chờ xử lý" -->
-        <div id="processing-message">
-            Đang chờ xử lý. Vui lòng đợi...
+            </div>
+<div class="image-container">
+    <img src="https://danhgiaxe.edu.vn/wp-content/uploads/2025/01/ech-xanhg-3.gif" alt="Hình ảnh nhấp nháy và di chuyển" class="moving-blinking-image">
+  </div>
         </div>
-    </main>
-    <footer>
-        <p>&copy; 2025 - Bản quyền thuộc về Hà Văn Huấn</p>
-    </footer>
+<!-- Popup sao chép thành công -->
+        <div class="copy-success-popup" id="copy-success-popup">
+            <div class="popup-content">
+                <div class="checkmark-container">
+                    <div class="checkmark"></div>
+                </div>
+                <h2>Sao chép thành công!</h2>
+                <p>Mã giao dịch đã được sao chép vào clipboard.</p>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Lấy thông tin từ URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const productName = urlParams.get('product');
-        const productPrice = urlParams.get('price');
+// Dữ liệu ngân hàng
+const banks = {
+    Mbbank: {
+        accountNumber: "0325575642",
+        accountName: "HA VAN HUAN"
+    },
+    Momo: {
+        accountNumber: "0325575642",
+        accountName: "Hà Văn Huấn"
+    },
+};
 
-        // Hiển thị thông tin trên trang thanh toán
-        document.getElementById('product-name').textContent = `Sản phẩm: ${productName}`;
-        document.getElementById('product-price').textContent = `Giá: ${productPrice}`;
+// Tự động tạo mã giao dịch ngẫu nhiên khi tải trang
+document.addEventListener('DOMContentLoaded', () => {
+    const transactionCode = 'NAP' + Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('transaction-code').value = transactionCode;
 
-                        
- 
+    // Hiển thị thông tin ngân hàng mặc định
+    updateBankInfo("vietcombank");
+});
 
-        // Hàm sao chép nội dung vào clipboard
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                alert("Đã sao chép nội dung: " + text);
-            }).catch(err => {
-                alert("Sao chép thất bại!");
-            });
-        }
+// Cập nhật thông tin ngân hàng khi thay đổi lựa chọn
+document.getElementById('bank').addEventListener('change', function () {
+    const selectedBank = this.value;
+    updateBankInfo(selectedBank);
+});
 
-        // Hàm xác nhận đã chuyển khoản
-        function confirmPayment() {
-            document.getElementById('processing-message').style.display = 'block';  // Hiển thị thông báo
-        }
+// Tự động tạo mã giao dịch ngẫu nhiên khi tải trang
+document.addEventListener('DOMContentLoaded', () => {
+    const transactionCode = 'NAP' + Math.floor(1000 + Math.random() * 9000);
+    document.getElementById('transaction-code').value = transactionCode;
+    updateBankInfo("vietcombank");
+});
 
-// Hàm tạo chuỗi ngẫu nhiên gồm các ký tự
-        function generateRandomWord(length) {
-            const characters = 'abcdefghijklmnopqrstuvwxyz0123456789'; // Chỉ chấp nhận chữ và số
-            let result = '';
-            for (let i = 0; i < length; i++) {
-                const randomIndex = Math.floor(Math.random() * characters.length);
-                result += characters[randomIndex];
-            }
-            return result;
-        }
+// Cập nhật thông tin ngân hàng
+document.getElementById('bank').addEventListener('change', function () {
+    updateBankInfo(this.value);
+});
 
-        // Hàm tạo và hiển thị chuỗi 8 từ ngẫu nhiên
-        function displayRandomWords() {
-            const words = [];
-            for (let i = 0; i < 8; i++) {
-                words.push(generateRandomWord(5)); // Mỗi từ có độ dài 5 ký tự
-            }
-            document.getElementById('coder').textContent = words.join(''); // Hiển thị chuỗi mà không có khoảng trắng
-        }
+function updateBankInfo(bankKey) {
+    const accountNumberField = document.getElementById('account-number');
+    const accountNameField = document.getElementById('account-name');
+    const bankInfo = banks[bankKey];
 
-        // Gọi hàm để hiển thị chuỗi khi trang được tải
-        displayRandomWords();
-    </script>
+    accountNumberField.value = bankInfo.accountNumber;
+    accountNameField.value = bankInfo.accountName;
+}
+
+// Xử lý xác nhận thanh toán
+document.getElementById('confirm-btn').addEventListener('click', function () {
+    const amount = document.getElementById('amount').value;
+    const successPopup = document.getElementById('success-popup');
+    const alertPopup = document.getElementById('alert-popup');
+    const amountSuccess = document.getElementById('amount-success');
+
+    if (amount === '' || amount <= 0) {
+        // Hiển thị popup cảnh báo
+        alertPopup.style.display = 'flex';
+        setTimeout(() => {
+            alertPopup.style.display = 'none';
+        }, 3000);
+        return;
+    }
+
+    // Hiển thị popup thành công
+    amountSuccess.textContent = amount.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    successPopup.style.display = 'flex';
+    setTimeout(() => {
+        successPopup.style.display = 'none';
+    }, 3000);
+});
+
+// Xử lý sao chép mã giao dịch
+document.getElementById('transaction-code').addEventListener('click', function () {
+    const transactionCode = this.value;
+
+    // Sao chép mã giao dịch vào clipboard
+    navigator.clipboard.writeText(transactionCode).then(() => {
+        // Hiển thị popup sao chép thành công
+        const copySuccessPopup = document.getElementById('copy-success-popup');
+        copySuccessPopup.style.display = 'flex';
+
+        setTimeout(() => {
+            copySuccessPopup.style.display = 'none';
+        }, 3000);
+    }).catch(err => {
+        console.error('Lỗi khi sao chép: ', err);
+    });
+});
+</script>
 </body>
 </html>

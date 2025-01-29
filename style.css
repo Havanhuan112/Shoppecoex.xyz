@@ -315,11 +315,7 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Các form nạp tiền */
-#deposit-options, #bank-deposit, #card-deposit {
-    padding: 20px;
-    margin-top: 50px;
-}
+
 
 /* Thẻ cào */
 input {
@@ -345,25 +341,6 @@ input {
 .close-menu-btn:hover {
     background-color: red;
 }
-/* Nút sao chép với biểu tượng */
-.copy-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin-left: 10px;
-}
-
-/* Điều chỉnh kích thước biểu tượng sao chép */
-.copy-btn img {
-    width: 35px; /* Thay đổi kích thước icon nếu cần */
-    height: 35px;
-}
-
-/* Hiệu ứng hover cho nút sao chép */
-.copy-btn:hover img {
-    opacity: 0.7; /* Làm mờ icon khi hover */
-}
 
 #login-warning {
     position: fixed;
@@ -388,51 +365,6 @@ input {
     to {
         opacity: 1;
     }
-}
-/* Kiểu dáng của form thông báo */
-.welcome-form {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);  /* Nền mờ */
-    display: none;  /* Ẩn mặc định */
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
-}
-
-.form-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    animation: fadeIn 1s ease-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.welcome-form h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-.welcome-form p {
-    font-size: 18px;
-    margin: 10px 0;
 }
 
 // chat bot 
@@ -643,4 +575,141 @@ i:active {
     }
 
          
-   
+   /* Kiểu dáng của form thông báo */
+.welcome-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);  /* Nền mờ */
+    display: none;  /* Ẩn mặc định */
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.welcome-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.welcome-form p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+
+    /* Container chứa hình ảnh */
+.imageh3-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hình ảnh tròn với hiệu ứng động */
+.round-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; /* Tạo hình tròn */
+  object-fit: cover; /* Cắt bớt phần thừa của hình ảnh */
+  opacity: 0;
+  transform: scale(0);
+  animation: fadeIn 1s forwards, zoomIn 1s forwards;
+}
+
+/* Hiệu ứng phóng to và làm mờ hình ảnh */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* Container chứa hình ảnh */
+.imageh4-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Hình ảnh có hiệu ứng nhấp nháy và di chuyển */
+.moving-blinking-image {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  position: absolute;
+  animation: blink 1s infinite, move 5s linear infinite;
+}
+/* Lớp phủ khói xung quanh hình ảnh */
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3); /* Màu đen mờ */
+  filter: blur(10px); /* Làm mờ tạo hiệu ứng khói */
+  border-radius: 50%; /* Giữ khói bao quanh hình ảnh tròn */
+  z-index: -1; /* Đảm bảo lớp phủ khói nằm dưới hình ảnh */
+  animation: smoke 5s infinite; 
+}
+
+/* Hiệu ứng nhấp nháy (mờ và hiện lại) */
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Hiệu ứng di chuyển qua lại */
+@keyframes move {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: 500px; /* Di chuyển sang phải */
+  }
+  50% {
+    left: 500px;
+  }
+}
