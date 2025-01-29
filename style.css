@@ -642,18 +642,5 @@ i:active {
       filter: blur(2px); /* Hiệu ứng mờ */
     }
 
-         .original-price {
-            text-decoration: line-through;
-            color: gray;
-            margin-right: 10px;
-        }
-        .discounted-price {
-            font-weight: bold;
-            color: red;
-        }
-          .sale-icon {
-            font-size: 24px;
-            color: orange;
-            margin-right: 10px;
-        }
+         
    
