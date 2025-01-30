@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Admin</title>
+    <!-- Thêm Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<style>
+/* Tổng thể */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    min-height: 100vh;
+    color: #333;
+    background: #f4f6f9;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #4CAF50, #8BC34A);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.header h1 {
+    flex: 1;
+    text-align: center;
+}
+
+.menu-toggle {
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    color: #ecf0f1;
+    padding-top: 60px;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    left: -250px; /* Ẩn sidebar */
+    transition: all 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar.active {
+    left: 0; /* Hiện sidebar */
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sidebar ul li:hover {
+    background: #34495e;
+}
+
+.sidebar ul li i {
+    margin-right: 10px;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: 20px;
+    padding: 100px 20px;
+    flex: 1;
+}
+
+/* Cards */
+.admin-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    color: #4CAF50;
+    animation: pulse 1.5s infinite;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Hiệu ứng */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+}
+/* Loading Overlay Styles */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+/* Spin animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Hide the loading overlay after the page is ready */
+.loading-overlay.hidden {
+    visibility: hidden;
+    opacity: 0;
+}
+   
+/* Style for the status dot */
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background-color: green; /* Green color for active status */
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 10px;
+} 
+
+
+       udid-info {
+    margin-top: 20px;
+}
+
+#download-certificate {
+    margin-top: 10px;
+    display: inline-block;
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#download-certificate.hidden {
+    display: none;
+}
+
+.error-message {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.error-message.hidden {
+    display: none;
+}
+    
+</style>
+</head>
+<body>
+<!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+        <!-- Header -->
+    <header class="header">
+        <div class="menu-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <h1>Hệ Thống Quản Trị</h1>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <ul>
+            <li><i class="fas fa-home"></i> Trang Chủ</li>
+            <li><i class="fas fa-users"></i> Quản Lý Người Dùng</li>
+            <li><i class="fas fa-chart-line"></i> Báo Cáo</li>
+            <li><i class="fas fa-cogs"></i> Cài Đặt</li>
+            <li><i class="fas fa-sign-out-alt"></i> Đăng Xuất</li>
+        </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="admin-dashboard">
+            <div class="card">
+                <i class="fas fa-user-shield"></i>
+                <h3>Admin Info</h3>
+                <p>Hà Văn Huấn</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-user-friends"></i>
+                <h3>Người Dùng</h3>
+                <p>1,245 Người</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-chart-pie"></i>
+                <h3>Thống Kê</h3>
+                <p>Doanh thu: $10,5 days</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-bell"></i>
+                <h3>Thông Báo</h3>
+                <p>3 Tin Mới</p>
+            </div>
+            <!-- New card for active users -->
+            <div class="card" id="active-users-card">
+                <i class="fas fa-users"></i>
+                <h3>Người Hoạt Động <span class="status-dot"></span></h3>
+                <p id="active-users">Đang tải...</p>
+            </div>
+<!-- New Card for UDID input -->
+            <div class="card" id="udid-card">
+                <h3>Nhập UDID iPhone</h3>
+                <input type="text" id="udid-input" placeholder="Nhập UDID của iPhone">
+                <button onclick="checkUdid()">Kiểm Tra UDID</button>
+                <div id="udid-info" class="udid-info">
+                    <p id="device-name">Tên máy: </p>
+                    <p id="device-model">Mẫu máy: </p>
+                    <a href="https://www.facebook.com/profile.php?id=61561543393412" id="download-certificate" class="hidden">Tải Chứng Chỉ Miễn Phí</a>
+                </div>
+                <div id="error-message" class="error-message hidden">Không tìm thấy UDID hợp lệ!</div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+<script>
+// Toggle Sidebar
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('active');
+}
+
+// Hàm tạo số ngẫu nhiên trong khoảng min và max
+function randomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// Cập nhật số người hoạt động mỗi phút
+function updateActiveUsers() {
+    const activeUsersElement = document.getElementById('active-users');
+    const newActiveUsers = randomNumber(500, 1000); // Giả lập từ 500 đến 1000 người hoạt động
+    activeUsersElement.textContent = `${newActiveUsers} Người`;
+}
+
+// Cập nhật số người hoạt động mỗi 60 giây
+setInterval(updateActiveUsers, 60000);
+
+// Gọi hàm ngay khi trang được load
+updateActiveUsers();   
+        
+</script>
+<script>
+window.onload = function() {
+    // Show loading overlay by default
+    const loadingOverlay = document.getElementById('loading-overlay');
+
+    // Hide the loading overlay after 5 seconds
+    setTimeout(function() {
+        loadingOverlay.classList.add('hidden'); // Hide the overlay with fade-out effect
+    }, 2000); // 5 seconds delay
+};
+
+// Simulate a UDID validation and device information retrieval
+function checkUdid() {
+    const udidInput = document.getElementById('udid-input').value.trim();
+    const deviceName = document.getElementById('device-name');
+    const deviceModel = document.getElementById('device-model');
+    const downloadBtn = document.getElementById('download-certificate');
+    const errorMessage = document.getElementById('error-message');
+
+    // Clear any previous data
+    deviceName.textContent = "Tên máy: ";
+    deviceModel.textContent = "Mẫu máy: ";
+    downloadBtn.classList.add('hidden');
+    errorMessage.classList.add('hidden');
+
+    // List of valid UDIDs and associated devices
+    const deviceInfo = {
+        "00008030-0016054C2642802E": {
+            name: "iPhone",
+            model: "A2342"
+        },
+        "00008030-0016054C2642802F": {
+            name: "iPhone",
+            model: "A2636"
+        },
+        "00008030-0016054C2642802G": {
+            name: "iPhone",
+            model: "A2649"
+        }
+        // Add more UDIDs as needed
+    };
+
+    // Check if the UDID is in the deviceInfo list
+    if (deviceInfo[udidInput]) {
+        const device = deviceInfo[udidInput];
+        deviceName.textContent = `Tên máy: ${device.name}`;
+        deviceModel.textContent = `Mẫu máy: ${device.model}`;
+        downloadBtn.classList.remove('hidden'); // Show the download button
+    } else {
+        errorMessage.classList.remove('hidden'); // Show error message
+        errorMessage.classList.add('shake-error'); // Add shaking animation for the error
+        setTimeout(() => {
+            errorMessage.classList.remove('shake-error');
+        }, 1000);
+    }
+}
+
+// Shake error effect (CSS keyframes)
+document.styleSheets[0].insertRule(`
+    .shake-error {
+        animation: shake 0.5s ease-in-out;
+    }
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        50% { transform: translateX(5px); }
+        75% { transform: translateX(-5px); }
+        100% { transform: translateX(0); }
+    }
+`, document.styleSheets[0].cssRules.length);
+</script>
+</body>
+</html>
