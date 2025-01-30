@@ -674,20 +674,7 @@ i:active {
   position: absolute;
   animation: blink 1s infinite, move 5s linear infinite;
 }
-/* Lớp phủ khói xung quanh hình ảnh */
-.image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Màu đen mờ */
-  filter: blur(10px); /* Làm mờ tạo hiệu ứng khói */
-  border-radius: 50%; /* Giữ khói bao quanh hình ảnh tròn */
-  z-index: -1; /* Đảm bảo lớp phủ khói nằm dưới hình ảnh */
-  animation: smoke 5s infinite; 
-}
-
+/* Lớp phủ khói xung quanh hình ảnh 
 /* Hiệu ứng nhấp nháy (mờ và hiện lại) */
 @keyframes blink {
   0% {
@@ -713,3 +700,64 @@ i:active {
     left: 500px;
   }
 }
+
+        .thongtin-container {
+            width: 400px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeIn 1s ease;
+        }
+
+        .app-header {
+            background: #4caf50;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cap-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .muc-item {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .muc-item:hover {
+            background: #f1f1f1;
+            transform: scale(1.02);
+        }
+
+        .customer-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .purchase-amount {
+            color: #4caf50;
+            font-size: 14px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+  
