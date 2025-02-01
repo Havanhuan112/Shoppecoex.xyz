@@ -1,67 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Liên Hệ - Shop Huấn Hà</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>Liên Hệ</title>
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <style>
+        /* Cơ bản cho trang */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .form-container {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .form-container:hover {
+            transform: scale(1.05);
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: #444;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #4CAF50;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button:active {
+            background-color: #3e8e41;
+        }
+
+        /* Hiệu ứng chuyển động cho form khi gửi thành công */
+        .success-message {
+            color: #4CAF50;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Liên Hệ Với Chúng Tôi</h1>
-    </header>
-    <main>
-        <form action="http://localhost:5000/send_email" method="post" id="contact-form">
-    <label for="name">Tên của bạn:</label>
-    <input type="text" id="name" name="name" required>
+    <div class="form-container">
+        <h2>Liên Hệ với Chúng Tôi</h2>
+        <form id="contact-form">
+            <label for="name">Họ và tên:</label>
+            <input type="text" id="name" name="name" required><br>
 
-    <label for="email">Email của bạn:</label>
-    <input type="email" id="email" name="email" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
 
-    <label for="message">Tin nhắn:</label>
-    <textarea id="message" name="message" rows="4" required></textarea>
+            <label for="message">Tin nhắn:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br>
 
-    <button type="submit">Gửi</button>
-</form>
-        <p id="response-message" class="hidden"></p>
-    </main>
-    <footer>
-        <p>&copy; 2025 - Bản quyền thuộc về Hà Văn Huấn</p>
-    </footer>
+            <button type="submit">Gửi</button>
+        </form>
+        <div class="success-message" id="success-message">
+            Cảm ơn bạn đã gửi tin nhắn! Chúng tôi sẽ liên hệ với bạn sớm.
+        </div>
+    </div>
 
-<script>
-// Xử lý khi gửi form
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Ngăn chặn gửi form mặc định
+    <script>
+               (function() {
+            emailjs.init('ckbZUMCzhUMrO5ocC'); // Thay thế 'YOUR_USER_ID' bằng User ID của bạn
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const responseMessage = document.getElementById('response-message');
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Ngừng reload trang khi gửi form
 
-    // Kiểm tra nếu người dùng chưa điền đầy đủ thông tin
-    if (!name || !email || !message) {
-        responseMessage.textContent = 'Vui lòng điền đầy đủ thông tin!';
-        responseMessage.classList.remove('hidden');
-        responseMessage.style.color = 'red';
-        return;
-    }
+                var form = event.target;
 
-    // Lưu tin nhắn vào localStorage (chỉ là ví dụ)
-    let messages = JSON.parse(localStorage.getItem('messages')) || [];
-    messages.push({ name, email, message, date: new Date().toISOString() });
-    localStorage.setItem('messages', JSON.stringify(messages));
-
-      // Thông báo thành công
-    responseMessage.textContent = 'Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất.';
-    responseMessage.classList.remove('hidden');
-    responseMessage.style.color = 'green';
-
-    // Chuyển hướng sang trang tin nhắn
-    window.location.href = 'messages.html';
-});
-    
-</script>
+                emailjs.sendForm('service_m9d0ua7', 'template_wzpfnrf', form)
+                    .then(function(response) {
+                        document.getElementById('success-message').style.display = 'block';
+                        setTimeout(function() {
+                            document.getElementById('success-message').style.display = 'none';
+                        }, 5000);
+                    }, function(error) {
+                        alert("Có lỗi xảy ra. Vui lòng thử lại!");
+                    });
+            });
+        })();
+   
+    </script>
 </body>
 </html>
