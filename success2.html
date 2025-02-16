@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao dịch thành công</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        body {
+            background-color: #222;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background: #333;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        .message {
+            font-size: 20px;
+            margin: 15px 0;
+            color: #00ff00;
+        }
+        .link-container {
+            background: #444;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .link-text {
+            color: #00ff00;
+            word-break: break-all;
+        }
+        .copy-btn {
+            background: #007bff;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background: #0056b3;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 10px;
+        }
+        .btn i {
+            margin-right: 8px;
+        }
+        .btn:hover {
+            opacity: 0.8;
+        }
+        .message-btn { background: #008000; color: white; }
+        .password-btn { background: #ffcc00; color: black; }
+        .contact-btn { background: #007bff; color: white; } /* Nút liên hệ */
+        .back-btn { background: #ff4444; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Giao Dịch Thành Công!</h2>
+        <div class="message">Cảm ơn bạn đã Mua Hàng.</div>
+
+        <!-- Hiển thị link -->
+        <div class="link-container">
+            <span class="link-text" id="payment-link">ẤN VÀO NÚT LIÊN HỆ Ở BÊN DƯỚI</span>
+            <button class="copy-btn" onclick="copyToClipboard('payment-link')">
+                <i class="fa-regular fa-copy"></i>
+            </button>
+        </div>
+
+        <!-- Nút dẫn đến link -->
+        <button class="btn message-btn" onclick="openPaymentLink()">
+            <i class="fa-solid fa-comment"></i> Đi tới liên kết
+        </button>
+
+        <!-- Nút lấy mật khẩu -->
+        <button class="btn password-btn" onclick="openPasswordPage()">
+            <i class="fa-solid fa-key"></i> Lấy mật khẩu
+        </button>
+
+        <!-- Nút liên hệ -->
+        <button class="btn contact-btn" onclick="openContactPage()">
+            <i class="fa-solid fa-phone"></i> Liên hệ
+        </button>
+        <!-- Nút quay lại -->
+        <button class="btn back-btn" onclick="goBack()">
+            <i class="fa-solid fa-arrow-left"></i> Quay lại
+        </button>
+
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            var text = document.getElementById(elementId).innerText;
+            var tempInput = document.createElement("input");
+            document.body.appendChild(tempInput);
+            tempInput.value = text;
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("Đã sao chép: " + text);
+        }
+
+        function openPaymentLink() {
+            var link = document.getElementById("https://t.me/suporthuanha").innerText;
+            window.open(link, "_blank");
+        }
+
+        function openPasswordPage() {
+            window.open("https://t.me/suporthuanha", "_blank"); // Thay link Facebook hoặc Telegram của bạn
+        }
+
+        function openContactPage() {
+            window.open("https://t.me/suporthuanha", "_blank"); // Thay link Telegram hoặc Facebook của bạn
+        }
+        function goBack() {
+            window.location.href = "index.html"; // Thay thế "index.html" bằng trang bạn muốn quay lại
+        }
+ 
+    </script>
+
+</body>
+</html>

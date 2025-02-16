@@ -3,11 +3,11 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #ffffff;
+    background-color: #333333;
 }
 
 header {
-    background-color: #ffffff;
+    background-color: #333333;
     color: white;
     text-align: center;
     padding: 1rem 0;
@@ -21,7 +21,7 @@ main {
 }
 
 .product {
-    background-color: white;
+    background-color: #333333;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -191,7 +191,7 @@ form {
 
 #username-display {
     font-size: 18px;
-    color: #333;
+    color: #111;
 }
 #logout-btn {
     background-color: transparent;
